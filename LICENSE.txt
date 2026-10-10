@@ -1,0 +1,9 @@
+Klew Hub v1 - Private distribution version
+
+Copyright (c) 2026 Klew Hub author. All rights reserved.
+
+Use, modification and redistribution of this version are subject to the project
+owner's permission. This version is supplied as-is, without any warranty.
+
+This notice applies to the current private distribution version. Earlier versions
+distributed under the MIT License retain their original license.
