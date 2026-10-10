@@ -1,0 +1,34 @@
+{
+  "KlewHubV1.client.luau": {
+    "bytes": 68433,
+    "sha256": "53616c0f372338955d4bf4a4b4d3b2cf8db6b68208cff61ab78919519509f996"
+  },
+  "KlewHubV1.Studio-private.luau": {
+    "bytes": 72419,
+    "sha256": "8eb75338dd0480156d28f9ff9f97d3b39920af5ace67a27d8d46999907b57665"
+  },
+  "KlewHubV1.server.luau": {
+    "bytes": 20745,
+    "sha256": "f4067f0b40fbd96b5de0e40612981e06ef5e511da7c3d4019e37e2ed96a5cab5"
+  },
+  "KlewHubV1.StudioInstaller.luau": {
+    "bytes": 95458,
+    "sha256": "b581421d132a4013feec52d4aaffadf0efad64e3f771c35c011cbf667bc67a23"
+  },
+  "github-distribution/KlewHubV1.lua": {
+    "bytes": 72419,
+    "sha256": "8eb75338dd0480156d28f9ff9f97d3b39920af5ace67a27d8d46999907b57665"
+  },
+  "github-distribution/KlewHubV1.server.lua": {
+    "bytes": 21818,
+    "sha256": "4cdcec919923dea5c4a586b3eb0ebabae7f90eb4228f2d63dea78bfa4fc9498b"
+  },
+  "validation": {
+    "client_source_and_distribution_tests_each": 91,
+    "server_source_and_distribution_tests_each": 39,
+    "luau_compile": "passed",
+    "normalized_ast_equal": true,
+    "live_roblox_studio": "not_tested",
+    "lootlabs_live": "not_configured"
+  }
+}
