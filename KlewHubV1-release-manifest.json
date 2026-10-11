@@ -1,34 +1,126 @@
 {
-  "KlewHubV1.client.luau": {
-    "bytes": 68433,
-    "sha256": "53616c0f372338955d4bf4a4b4d3b2cf8db6b68208cff61ab78919519509f996"
+  "schema_version": 3,
+  "release_model": "external_http_key_service_with_discord_admin",
+  "generated_at_utc": "2026-10-11T06:59:52.972385+00:00",
+  "loader_url": "https://raw.githubusercontent.com/sahtesahte086-max/klew-hub-v1/main/KlewHubV1.lua",
+  "client_config_key_service_url": "https://klew-hub-key-service.neataphid16.chatgpt.site",
+  "publication_status": {
+    "public_portal": "public",
+    "key_service_api": "anonymous_hello_verified",
+    "discord_interactions_endpoint": "endpoint_verified",
+    "lootlabs_campaign_and_completion": "campaign_configured_completion_unverified",
+    "github_this_release": "publication_pending"
   },
-  "KlewHubV1.Studio-private.luau": {
-    "bytes": 72419,
-    "sha256": "8eb75338dd0480156d28f9ff9f97d3b39920af5ace67a27d8d46999907b57665"
+  "publication_status_provenance": "operator_confirmed_outcomes_supplied_on_command_line; generator_makes_no_network_requests",
+  "client_requirements": {
+    "external_http_post_adapter": true,
+    "standard_roblox_local_script_supported": false,
+    "legacy_game_server_script_required": false,
+    "in_game_admin_default": false,
+    "public_raw_is_closed_source": false
   },
-  "KlewHubV1.server.luau": {
-    "bytes": 20745,
-    "sha256": "f4067f0b40fbd96b5de0e40612981e06ef5e511da7c3d4019e37e2ed96a5cab5"
-  },
-  "KlewHubV1.StudioInstaller.luau": {
-    "bytes": 95458,
-    "sha256": "b581421d132a4013feec52d4aaffadf0efad64e3f771c35c011cbf667bc67a23"
-  },
-  "github-distribution/KlewHubV1.lua": {
-    "bytes": 72419,
-    "sha256": "8eb75338dd0480156d28f9ff9f97d3b39920af5ace67a27d8d46999907b57665"
-  },
-  "github-distribution/KlewHubV1.server.lua": {
-    "bytes": 21818,
-    "sha256": "4cdcec919923dea5c4a586b3eb0ebabae7f90eb4228f2d63dea78bfa4fc9498b"
+  "artifacts": {
+    "KlewHubV1.client.luau": {
+      "bytes": 73112,
+      "sha256": "14b479882c8aeb2a1c5c6cbd80209d7cd2b09e128c2b80242ca1f715e42b0681",
+      "role": "current_readable_http_client",
+      "ast_matches_current_source": true
+    },
+    "KlewHubV1.lua": {
+      "bytes": 76412,
+      "sha256": "5e9743f254764ed154f693cd1784f433f7aad86f65f4a0508ea0c5b235a8941a",
+      "role": "current_obfuscated_http_client",
+      "ast_matches_current_source": true
+    },
+    "KlewHubV1.Studio-private.luau": {
+      "bytes": 76412,
+      "sha256": "5e9743f254764ed154f693cd1784f433f7aad86f65f4a0508ea0c5b235a8941a",
+      "role": "current_payload_compatibility_filename_requires_http_adapter",
+      "ast_matches_current_source": true
+    },
+    "KlewHubV1.GitHub-loader.luau": {
+      "bytes": 113,
+      "sha256": "43234451cc5d7248411d3b7b3ebae51dd4e1eef9dcbe92123d60ab51471d500b",
+      "role": "raw_download_loader_requires_supported_environment"
+    },
+    "github-distribution/KlewHubV1.lua": {
+      "bytes": 76412,
+      "sha256": "5e9743f254764ed154f693cd1784f433f7aad86f65f4a0508ea0c5b235a8941a",
+      "role": "github_payload_staging_copy",
+      "ast_matches_current_source": true,
+      "identical_to_current_local_payload": true
+    },
+    "KlewHubV1.server.luau": {
+      "bytes": 20745,
+      "sha256": "f4067f0b40fbd96b5de0e40612981e06ef5e511da7c3d4019e37e2ed96a5cab5",
+      "role": "legacy_studio_server_not_required_by_current_client",
+      "tested_this_release": false
+    },
+    "KlewHubV1.server-private.luau": {
+      "bytes": 21818,
+      "sha256": "4cdcec919923dea5c4a586b3eb0ebabae7f90eb4228f2d63dea78bfa4fc9498b",
+      "role": "legacy_studio_server_not_required_by_current_client",
+      "tested_this_release": false
+    },
+    "KlewHubV1.StudioInstaller.luau": {
+      "bytes": 95458,
+      "sha256": "b581421d132a4013feec52d4aaffadf0efad64e3f771c35c011cbf667bc67a23",
+      "role": "legacy_studio_two_script_installer",
+      "tested_this_release": false
+    },
+    "KlewHubV1.Studio-one-line.luau": {
+      "bytes": 64134,
+      "sha256": "f6ff4864ee13cc7fae65628b2bd35ec5f03ef7023c9f10b82b06a1e36a7382e4",
+      "role": "legacy_support_wrapper_not_validated_this_release",
+      "tested_this_release": false
+    },
+    "KlewHubV1.loadstring.luau": {
+      "bytes": 73714,
+      "sha256": "4bde9858bcbe86abd6ae22d3fa7ea58622d98fca9fc14519b4c707f88b6dfd51",
+      "role": "legacy_support_wrapper_not_validated_this_release",
+      "tested_this_release": false
+    },
+    "github-distribution/KlewHubV1.server.lua": {
+      "bytes": 21818,
+      "sha256": "4cdcec919923dea5c4a586b3eb0ebabae7f90eb4228f2d63dea78bfa4fc9498b",
+      "role": "legacy_studio_server_not_required_by_current_client",
+      "tested_this_release": false
+    },
+    "github-distribution/KlewHubV1.StudioInstaller.luau": {
+      "bytes": 95458,
+      "sha256": "b581421d132a4013feec52d4aaffadf0efad64e3f771c35c011cbf667bc67a23",
+      "role": "legacy_studio_two_script_installer",
+      "tested_this_release": false
+    }
   },
   "validation": {
-    "client_source_and_distribution_tests_each": 91,
-    "server_source_and_distribution_tests_each": 39,
-    "luau_compile": "passed",
-    "normalized_ast_equal": true,
+    "client_source_and_packaged_payload_tests_each": 91,
+    "client_test_artifacts": [
+      "KlewHubV1.client.luau",
+      "KlewHubV1.lua"
+    ],
+    "backend_tests_total": 69,
+    "backend_test_breakdown": {
+      "discord": 24,
+      "hub": 21,
+      "lootlabs": 24
+    },
+    "test_counts_provenance": "release_check_results_supplied_on_command_line; generator_does_not_rerun_runtime_tests",
+    "current_source_normalized_ast_equal": {
+      "KlewHubV1.client.luau": true,
+      "KlewHubV1.lua": true,
+      "KlewHubV1.Studio-private.luau": true,
+      "github-distribution/KlewHubV1.lua": true
+    },
+    "luau_compile_results": {
+      "KlewHubV1.client.luau": "passed",
+      "KlewHubV1.lua": "passed",
+      "KlewHubV1.Studio-private.luau": "passed",
+      "github-distribution/KlewHubV1.lua": "passed"
+    },
+    "legacy_server_and_installer_retested_this_release": false,
     "live_roblox_studio": "not_tested",
-    "lootlabs_live": "not_configured"
+    "discord_live": "endpoint_verified",
+    "lootlabs_live": "campaign_configured_completion_unverified"
   }
 }
