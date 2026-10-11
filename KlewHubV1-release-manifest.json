@@ -1,15 +1,18 @@
 {
   "schema_version": 3,
   "release_model": "external_http_key_service_with_discord_admin",
-  "generated_at_utc": "2026-10-11T06:59:52.972385+00:00",
+  "generated_at_utc": "2026-10-11T07:02:36.902123+00:00",
   "loader_url": "https://raw.githubusercontent.com/sahtesahte086-max/klew-hub-v1/main/KlewHubV1.lua",
+  "github_verified_payload_commit": "c38147424c4c6ebece7b06a24f808841d407934a",
   "client_config_key_service_url": "https://klew-hub-key-service.neataphid16.chatgpt.site",
   "publication_status": {
     "public_portal": "public",
     "key_service_api": "anonymous_hello_verified",
     "discord_interactions_endpoint": "endpoint_verified",
     "lootlabs_campaign_and_completion": "campaign_configured_completion_unverified",
-    "github_this_release": "publication_pending"
+    "lootlabs_start_and_pending_poll": "start_pending_poll_verified",
+    "lootlabs_provider_configuration": "postback_configuration_persisted",
+    "github_this_release": "published_hash_verified"
   },
   "publication_status_provenance": "operator_confirmed_outcomes_supplied_on_command_line; generator_makes_no_network_requests",
   "client_requirements": {
@@ -121,6 +124,8 @@
     "legacy_server_and_installer_retested_this_release": false,
     "live_roblox_studio": "not_tested",
     "discord_live": "endpoint_verified",
-    "lootlabs_live": "campaign_configured_completion_unverified"
+    "lootlabs_live": "campaign_configured_completion_unverified",
+    "lootlabs_live_start_and_pending_poll": "start_pending_poll_verified",
+    "lootlabs_provider_configuration": "postback_configuration_persisted"
   }
 }

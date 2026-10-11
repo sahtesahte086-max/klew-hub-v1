@@ -9,7 +9,9 @@ Bu sürüm, key doğrulaması için harici HTTP servisi kullanır. **Oyuna eski 
 | HTTP API | Canlı anonim Hello yanıtı doğrulandı; key aktivasyonu bununla doğrulanmış olmaz. |
 | Discord endpoint | Canlı Discord endpoint doğrulandı; bot komutlarının uçtan uca çalışması ayrıca test edilmelidir. |
 | LootLabs | LootLabs kampanyası yapılandırıldı; canlı tamamlanma ve key teslimi henüz doğrulanmadı. |
-| GitHub bu sürüm | Bu sürümün GitHub yayını bekliyor; yerel hazırlık yayın doğrulaması değildir. |
+| LootLabs Start/Poll | Public Start 200 ile tek aşamalı kampanya bağlantısı verdi; Poll 200, pending ve key yok yanıtı verdi. Reklam tamamlanması/key teslimi test edilmedi. |
+| LootLabs provider ayarı | LootLabs panelindeki postback ayarları yeniden yükleme sonrasında kalıcı olarak doğrulandı. Gerçek callback teslimi test edilmedi. |
+| GitHub bu sürüm | GitHub Raw payload'ı yerel sürümün SHA-256 hash'iyle eşleşerek doğrulandı. |
 
 ## İstemci için gereken ortam
 
@@ -31,7 +33,9 @@ Bu adresin yazılı olması canlı API doğrulaması değildir. HTTP adaptörü 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/sahtesahte086-max/klew-hub-v1/main/KlewHubV1.lua"))()
 ```
 
-Bu satır, yükleme yöntemini ve gereken HTTP POST adaptörünü sağlayan ortamda istemciyi indirir. Repo yolu aynı kaldı. Bu sürümün GitHub yayını bekliyor; yerel hazırlık yayın doğrulaması değildir.
+Bu satır, yükleme yöntemini ve gereken HTTP POST adaptörünü sağlayan ortamda istemciyi indirir. Repo yolu aynı kaldı. GitHub Raw payload'ı yerel sürümün SHA-256 hash'iyle eşleşerek doğrulandı.
+
+Doğrulanan payload commit'i: `c38147424c4c6ebece7b06a24f808841d407934a`. Sonraki belge commit'leri payload değiştiği anlamına gelmez.
 
 `KlewHubV1.lua` değişken adları kısaltılmış dağıtım dosyasıdır. **Public GitHub Raw bağlantısı kapalı kaynak sağlamaz.** İndiren kişi kodu alabilir; obfuscation yalnız okumayı zorlaştırır. `LICENSE.txt` kullanım koşullarını belirtir, teknik gizlilik sağlamaz. Secrets ve bot tokenı dağıtım dosyalarına konulmaz.
 
