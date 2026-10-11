@@ -35,11 +35,13 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/sahtesahte086-max/kle
 
 Bu satır, yükleme yöntemini ve gereken HTTP POST adaptörünü sağlayan ortamda istemciyi indirir. Repo yolu aynı kaldı. GitHub Raw payload'ı yerel sürümün SHA-256 hash'iyle eşleşerek doğrulandı.
 
-Doğrulanan payload commit'i: `c38147424c4c6ebece7b06a24f808841d407934a`. Sonraki belge commit'leri payload değiştiği anlamına gelmez.
+Doğrulanan payload commit'i: `a7831b27a724e42f7204ef96e3c136883e5362b7`. Sonraki belge commit'leri payload değiştiği anlamına gelmez.
 
 `KlewHubV1.lua` değişken adları kısaltılmış dağıtım dosyasıdır. **Public GitHub Raw bağlantısı kapalı kaynak sağlamaz.** İndiren kişi kodu alabilir; obfuscation yalnız okumayı zorlaştırır. `LICENSE.txt` kullanım koşullarını belirtir, teknik gizlilik sağlamaz. Secrets ve bot tokenı dağıtım dosyalarına konulmaz.
 
 ## Key ve Discord yönetimi
+
+Key almak için [başlangıç sayfasını](https://klew-hub-key-service.neataphid16.chatgpt.site/portal) aç. Key al ilk tıklamada LootLabs sekmesini hazırlar; görev sonunda açılan ödül adresi yeni `/key` sonuç sayfasına yönlenir. Bildirim gecikirse bu sayfa tamamlanmayı kontrol eder. Key, yalnız doğrulanmış görev tamamlanınca sonuç sayfasında görünür ve kopyalanabilir. Cookie, key ve özel takip tokenı URL'ye yazılmaz. Görevi başlattığın tarayıcıyla devam et.
 
 Bot, belirlenen sunucuda ve server tarafında doğrulanan Discord kullanıcı allowlist'iyle çalışır. Roblox kullanıcı adı veya istemcinin bildirdiği UserId, Discord admin yetkisi vermez. Bot tokenı ve bootstrap secret yalnız server/yerel kayıt aracı tarafında kalır.
 
@@ -71,8 +73,12 @@ Discord yanıtları private'dır. Aynı interaction tekrar gelirse ikinci key ü
 
 ## Doğrulama
 
-Güncel okunabilir istemci ve paketlenmiş `KlewHubV1.lua` üzerinde **91'er test** geçti; taklit Roblox ortamında çalışan mantık testleridir. Kaynak/payload için Luau derlemesi ve yerel adlardan bağımsız AST eşitliği ayrıca kontrol edilir.
+Güncel okunabilir istemci ve paketlenmiş `KlewHubV1.lua` üzerinde **96'er test** geçti; taklit Roblox ortamında çalışan mantık testleridir. Kaynak/payload için Luau derlemesi ve yerel adlardan bağımsız AST eşitliği ayrıca kontrol edilir.
 
-HTTP backend için **69 test** geçti: Discord 24, Hub 21, LootLabs 24. Yerel SQLite ve taklit HTTP/Discord yanıtları kullanılır; canlı Discord botu veya LootLabs görev testi değildir.
+HTTP backend için **81 test** geçti: Discord 29, Hub 23, LootLabs 29. Yerel SQLite ve taklit HTTP/Discord yanıtları kullanılır; canlı Discord botu veya LootLabs görev testi değildir.
+
+Portalın gerçek TSX komponentinde **39 taklit ortam kontrolü** geçti; açılış, otomatik sekme, eski yapılandırmadan kurtarma ve takip/iptal akışlarını kapsar. Canlı tarayıcıda Key al düğmesinin tek tıklamayla LootLabs sekmesini açtığı ayrıca doğrulandı.
+
+Yeni sonuç sayfasında **26 taklit ortam kontrolü** çalıştırıldı. Görev sonrası yönlendirme ve cookie doğrulaması backend testlerine dahildir. Bu kontroller gerçek LootLabs reklam tamamlamasının yerine geçmez.
 
 Eski server/installer bu sürümde yeniden test edilmedi. Manifest mevcut hash'lerini saklar, yeni test başarısı iddia etmez. Gerçek Roblox çok oyunculu oturumu test edilmedi. Canlı HTTP/Discord/LootLabs/GitHub sonuçları yukarıdaki yayın tablosunda ayrı belirtilir; yerel testler bu sonuçları kanıtlamaz. HTML/JPG dosyaları önizlemedir. Güncel hash'ler ve paket kopyalarının eşleşmesi `KlewHubV1-release-manifest.json` içindedir.
