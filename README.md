@@ -8,6 +8,7 @@ Bu sürüm, key doğrulaması için harici HTTP servisi kullanır. **Oyuna eski 
 | --- | --- |
 | HTTP API | Canlı anonim Hello yanıtı doğrulandı; key aktivasyonu bununla doğrulanmış olmaz. |
 | Discord endpoint | Canlı Discord endpoint doğrulandı; bot komutlarının uçtan uca çalışması ayrıca test edilmelidir. |
+| Discord bildirimleri | Canlı özel kanal mesaj teslimi doğrulandı; gerçek Roblox ve LootLabs olayları ayrıca denenmelidir. |
 | LootLabs | LootLabs kampanyası yapılandırıldı; canlı tamamlanma ve key teslimi henüz doğrulanmadı. |
 | LootLabs Start/Poll | Public Start 200 ile tek aşamalı kampanya bağlantısı verdi; Poll 200, pending ve key yok yanıtı verdi. Reklam tamamlanması/key teslimi test edilmedi. |
 | LootLabs provider ayarı | LootLabs panelindeki postback ayarları yeniden yükleme sonrasında kalıcı olarak doğrulandı. Gerçek callback teslimi test edilmedi. |
@@ -35,7 +36,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/sahtesahte086-max/kle
 
 Bu satır, yükleme yöntemini ve gereken HTTP POST adaptörünü sağlayan ortamda istemciyi indirir. Repo yolu aynı kaldı. GitHub Raw payload'ı yerel sürümün SHA-256 hash'iyle eşleşerek doğrulandı.
 
-Doğrulanan payload commit'i: `a7831b27a724e42f7204ef96e3c136883e5362b7`. Sonraki belge commit'leri payload değiştiği anlamına gelmez.
+Doğrulanan payload commit'i: `1b9d899fc7572dbe860ab7eae03234bf3f7a8668`. Sonraki belge commit'leri payload değiştiği anlamına gelmez.
 
 `KlewHubV1.lua` değişken adları kısaltılmış dağıtım dosyasıdır. **Public GitHub Raw bağlantısı kapalı kaynak sağlamaz.** İndiren kişi kodu alabilir; obfuscation yalnız okumayı zorlaştırır. `LICENSE.txt` kullanım koşullarını belirtir, teknik gizlilik sağlamaz. Secrets ve bot tokenı dağıtım dosyalarına konulmaz.
 
@@ -57,12 +58,23 @@ Key süre dolmadan aktifleştirilir; erişim süresi ilk doğrulamadan başlar. 
 
 Discord yanıtları private'dır. Aynı interaction tekrar gelirse ikinci key üretilmez. Kesintide key yanıtı otomatik kurtarılamayabilir. Mevcut backend admin başına dakikada 10 komut sınırı uygular; yardım komutu bu sınırı kullanmaz. Ayrıntılı kurulum geliştirici paketindeki `work/klew-key-service/DISCORD-KURULUM.md` dosyasındadır; `env.example` yalnız boş/örnek ayarlar içerir.
 
+Key oluşturma, ilk aktifleştirme ve ayrı panel açılışları kalıcı bir bildirim kuyruğuna kaydedilir. Bot, yapılandırılmış özel kanala saat, bağlantı IP'si ve scriptin bildirdiği Roblox kullanıcı adı/UserId ile mesaj gönderir. Key alınırken Roblox kimliği henüz bilinmeyebilir; aktifleştirmede bildirilir. Discord'dan oluşturulan key'in IP'si bilinmiyor olarak gösterilir. Tam key veya oturum tokenı bildirim mesajına yazılmaz; kısa key izi ve **Key iptal et** düğmesi vardır. Düğme Discord imzası, sunucu, kanal ve admin ID'si doğrulanarak çalışır. Kanalın özel olduğu her gönderimde kontrol edilir; sunucu Administrator yetkisine sahip kişiler Discord gereği yine görebilir.
+
+Bildirim işlemi key mutasyonuyla aynı veritabanı transaction'ında yazılır. Rate limit ve bağlantı kesintisinde kuyruk korunur; sonraki API trafiği veya Discord komutu teslimi yeniden dener. Boşta otomatik zamanlayıcı yoktur. Bu nedenle kesintiden sonra sabit bir saniyede teslim veya tam bir kez teslim garantisi verilmez. Backend key iptalini hemen uygular; açık istemci sonraki 15 saniyelik doğrulama isteğinde iptali görür. Bağlantı kesilirse mevcut yerel erişim lease'i son başarılı doğrulamadan yaklaşık 35 saniye sonra kapanır.
+
+## Oturum ve ayarları hatırlama
+
+Doğrulanmış normal kullanıcı oturumu ve geçerli ayarlar aynı hesap/servis kapsamında hatırlanır. Yeniden çalıştırmada sunucu `Hello` doğrulaması başarılı olmadan erişim açılmaz. Key iptal edilmişse, oturumun süresi dolmuşsa veya **Kayıtlı girişi unut** seçilirse kayıtlı giriş temizlenir. Ham key ve admin bootstrap/oturumu saklanmaz. Dosya okuma/yazma sunan ortamda cihazda JSON kayıt tutulur; bu yetenek yoksa yalnız aynı çalışma ortamının belleği kullanılır. Kalıcı oturum tokenı bu yerel JSON'da bulunur; yerel dosyayı paylaşma.
+
+Ayar değişiklikleri, renk, kilit tuşu ve otomatik tuş tercihi saklanır; geçersiz/bozuk kayıt güvenli varsayılanlara döner. **Varsayılanlara dön** ayarları ve E kilit tuşunu sıfırlar.
+
 ## ESP ve kamera hedef takibi
 
-- Saydam kırmızı menü, logo `88391726271714`, açılış animasyonu ve kapalı başlayan gelişmiş ayarlar.
+- iOS tarzı yuvarlak koyu kartlar, beyaz pill sekmeler, kırmızı anahtarlar, logo `88391726271714`, açılış animasyonu ve kapalı başlayan gelişmiş ayarlar.
 - ESP'de takım arkadaşlarını gizleme varsayılan açık; kutu/isim/sağlık/mesafe isteğe bağlı. Yenileme 30–240 Hz, varsayılan 60 Hz; gerçek hız FPS'yi aşmaz.
 - Kamera takibi kendi takımına kilitlenmez. Ayarlanabilir kilit tuşu, basılı tutma/aç-kapat modu, KİLİT düğmesi ve gamepad L2.
 - Aim açıkken FOV halkası görünür. Kesin/yumuşak takip seçilebilir; aim ve ESP mesafeleri ayrıdır.
+- İsteğe bağlı otomatik basılı tuş: Sol Shift, Sol Ctrl veya Boşluk; hedef kilitliyken ya da kilitli + sol tık sırasında. Varsayılan kapalıdır. Menü/chat/oyun odağı kaybı, hedef kaybı, yetki iptali ve kapanışta tuş bırakılır; geçici key-up hatası için kapanıştan bağımsız sınırlı tekrar denemesi vardır. Resmî [VirtualInput](https://create.roblox.com/docs/reference/engine/classes/VirtualInput) API'si desteklenmiyorsa ayarda durum gösterilir. Gerçek oyun input desteği test edilmedi. AI modu eklenmedi.
 - Right Shift menüyü açar; başlıktan sürüklenir; × arayüz ve çizimleri kapatır. İstemciye yüklenmemiş karakterler hedeflenemez.
 
 ## Eski Studio dosyaları
@@ -73,9 +85,11 @@ Discord yanıtları private'dır. Aynı interaction tekrar gelirse ikinci key ü
 
 ## Doğrulama
 
-Güncel okunabilir istemci ve paketlenmiş `KlewHubV1.lua` üzerinde **96'er test** geçti; taklit Roblox ortamında çalışan mantık testleridir. Kaynak/payload için Luau derlemesi ve yerel adlardan bağımsız AST eşitliği ayrıca kontrol edilir.
+Güncel okunabilir istemci ve paketlenmiş `KlewHubV1.lua` üzerinde **141'er test** geçti; taklit Roblox ortamında çalışan mantık testleridir. Kaynak/payload için Luau derlemesi ve yerel adlardan bağımsız AST eşitliği ayrıca kontrol edilir.
 
-HTTP backend için **81 test** geçti: Discord 29, Hub 23, LootLabs 29. Yerel SQLite ve taklit HTTP/Discord yanıtları kullanılır; canlı Discord botu veya LootLabs görev testi değildir.
+HTTP backend için **129 test** geçti: Discord 34, Hub 32, LootLabs 31, bildirim 32. Yerel SQLite ve taklit HTTP/Discord yanıtları kullanılır; canlı Discord botu veya LootLabs görev testi değildir.
+
+Ek **2 gerçek workerd kontrolü**, dış ağ kapalı HTTP taklidiyle Worker fetch çağrılarının receiver ve yönlendirme davranışını doğrular.
 
 Portalın gerçek TSX komponentinde **39 taklit ortam kontrolü** geçti; açılış, otomatik sekme, eski yapılandırmadan kurtarma ve takip/iptal akışlarını kapsar. Canlı tarayıcıda Key al düğmesinin tek tıklamayla LootLabs sekmesini açtığı ayrıca doğrulandı.
 

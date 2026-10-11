@@ -1,9 +1,9 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "release_model": "external_http_key_service_with_discord_admin",
-  "generated_at_utc": "2026-10-11T12:05:03.900499+00:00",
+  "generated_at_utc": "2026-10-11T17:15:32.917017+00:00",
   "loader_url": "https://raw.githubusercontent.com/sahtesahte086-max/klew-hub-v1/main/KlewHubV1.lua",
-  "github_verified_payload_commit": "a7831b27a724e42f7204ef96e3c136883e5362b7",
+  "github_verified_payload_commit": "1b9d899fc7572dbe860ab7eae03234bf3f7a8668",
   "client_config_key_service_url": "https://klew-hub-key-service.neataphid16.chatgpt.site",
   "publication_status": {
     "public_portal": "public",
@@ -12,7 +12,8 @@
     "lootlabs_campaign_and_completion": "campaign_configured_completion_unverified",
     "lootlabs_start_and_pending_poll": "start_pending_poll_verified",
     "lootlabs_provider_configuration": "postback_configuration_persisted",
-    "github_this_release": "published_hash_verified"
+    "github_this_release": "published_hash_verified",
+    "discord_notifications": "live_message_verified"
   },
   "publication_status_provenance": "operator_confirmed_outcomes_supplied_on_command_line; generator_makes_no_network_requests",
   "client_requirements": {
@@ -24,20 +25,20 @@
   },
   "artifacts": {
     "KlewHubV1.client.luau": {
-      "bytes": 73197,
-      "sha256": "9a2687033ae2a701d6456aedd34d66c634f2977919c36e54f7f1536498ba19e1",
+      "bytes": 84289,
+      "sha256": "5a3d123e0f14954ff5538c1f4778a915d982fa612894a4a25b20b40a4e9e9d02",
       "role": "current_readable_http_client",
       "ast_matches_current_source": true
     },
     "KlewHubV1.lua": {
-      "bytes": 76404,
-      "sha256": "b60e960e609ca75abd38cbbd72071cc9865509ab195edaaa26512270d3ebb253",
+      "bytes": 87900,
+      "sha256": "bd54e95833d1f4f6bebcc8f1ed112e6f4a53d29c790ea10d8dc8e24ef7904c60",
       "role": "current_obfuscated_http_client",
       "ast_matches_current_source": true
     },
     "KlewHubV1.Studio-private.luau": {
-      "bytes": 76404,
-      "sha256": "b60e960e609ca75abd38cbbd72071cc9865509ab195edaaa26512270d3ebb253",
+      "bytes": 87900,
+      "sha256": "bd54e95833d1f4f6bebcc8f1ed112e6f4a53d29c790ea10d8dc8e24ef7904c60",
       "role": "current_payload_compatibility_filename_requires_http_adapter",
       "ast_matches_current_source": true
     },
@@ -47,8 +48,8 @@
       "role": "raw_download_loader_requires_supported_environment"
     },
     "github-distribution/KlewHubV1.lua": {
-      "bytes": 76404,
-      "sha256": "b60e960e609ca75abd38cbbd72071cc9865509ab195edaaa26512270d3ebb253",
+      "bytes": 87900,
+      "sha256": "bd54e95833d1f4f6bebcc8f1ed112e6f4a53d29c790ea10d8dc8e24ef7904c60",
       "role": "github_payload_staging_copy",
       "ast_matches_current_source": true,
       "identical_to_current_local_payload": true
@@ -97,16 +98,18 @@
     }
   },
   "validation": {
-    "client_source_and_packaged_payload_tests_each": 96,
+    "client_source_and_packaged_payload_tests_each": 141,
     "client_test_artifacts": [
       "KlewHubV1.client.luau",
       "KlewHubV1.lua"
     ],
-    "backend_tests_total": 81,
+    "backend_tests_total": 129,
+    "worker_runtime_tests_separate": 2,
     "backend_test_breakdown": {
-      "discord": 29,
-      "hub": 23,
-      "lootlabs": 29
+      "discord": 34,
+      "hub": 32,
+      "lootlabs": 31,
+      "notifications": 32
     },
     "portal_actual_component_mock_checks": 39,
     "result_page_actual_component_mock_checks": 26,
