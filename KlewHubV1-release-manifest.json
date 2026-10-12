@@ -1,14 +1,14 @@
 {
   "schema_version": 4,
   "release_model": "external_http_key_service_with_discord_admin",
-  "generated_at_utc": "2026-10-11T17:15:32.917017+00:00",
+  "generated_at_utc": "2026-10-12T14:36:24.701108+00:00",
   "loader_url": "https://raw.githubusercontent.com/sahtesahte086-max/klew-hub-v1/main/KlewHubV1.lua",
   "github_verified_payload_commit": "1b9d899fc7572dbe860ab7eae03234bf3f7a8668",
   "client_config_key_service_url": "https://klew-hub-key-service.neataphid16.chatgpt.site",
   "publication_status": {
     "public_portal": "public",
-    "key_service_api": "anonymous_hello_verified",
-    "discord_interactions_endpoint": "endpoint_verified",
+    "key_service_api": "live_key_lifecycle_verified",
+    "discord_interactions_endpoint": "live_panel_crud_verified",
     "lootlabs_campaign_and_completion": "campaign_configured_completion_unverified",
     "lootlabs_start_and_pending_poll": "start_pending_poll_verified",
     "lootlabs_provider_configuration": "postback_configuration_persisted",
@@ -53,6 +53,16 @@
       "role": "github_payload_staging_copy",
       "ast_matches_current_source": true,
       "identical_to_current_local_payload": true
+    },
+    "KlewHubV1-discord-admin-live-check.json": {
+      "bytes": 3278,
+      "sha256": "c62d4df69e8388a52ae0a7c21060f0997fd41e40930ec597a834a823c59e1fd5",
+      "role": "live_discord_admin_verification_receipt"
+    },
+    "github-distribution/KlewHubV1-discord-admin-live-check.json": {
+      "bytes": 3278,
+      "sha256": "c62d4df69e8388a52ae0a7c21060f0997fd41e40930ec597a834a823c59e1fd5",
+      "role": "github_live_admin_receipt_copy"
     },
     "KlewHubV1.server.luau": {
       "bytes": 20745,
@@ -103,11 +113,11 @@
       "KlewHubV1.client.luau",
       "KlewHubV1.lua"
     ],
-    "backend_tests_total": 129,
+    "backend_tests_total": 157,
     "worker_runtime_tests_separate": 2,
     "backend_test_breakdown": {
-      "discord": 34,
-      "hub": 32,
+      "discord": 50,
+      "hub": 44,
       "lootlabs": 31,
       "notifications": 32
     },
@@ -128,9 +138,25 @@
     },
     "legacy_server_and_installer_retested_this_release": false,
     "live_roblox_studio": "not_tested",
-    "discord_live": "endpoint_verified",
+    "discord_live": "live_panel_crud_verified",
     "lootlabs_live": "campaign_configured_completion_unverified",
     "lootlabs_live_start_and_pending_poll": "start_pending_poll_verified",
     "lootlabs_provider_configuration": "postback_configuration_persisted"
+  },
+  "live_admin_evidence": {
+    "file": "KlewHubV1-discord-admin-live-check.json",
+    "checked_at_utc": "2026-10-12 14:35:35 UTC",
+    "site": {
+      "url": "https://klew-hub-key-service.neataphid16.chatgpt.site",
+      "version": 12,
+      "source_commit": "efbf704538483d4bc56a43a6d622c811888d6549",
+      "saved_version_id": "appgprj_6aca5807e07c8191bfba974724c854d2~appgver_273177ec87c08191b69007566d26083b",
+      "deployment": "appgdep_6acceeb60a9481919814f6d75fb7443b",
+      "deployed_at_utc": "2026-10-12T14:29:31.156644+00:00",
+      "archive_sha256": "f88b6a3f5b8fb76355dc8fa38e1af762ac4b018b452f7e728cc210e9866dfb90"
+    },
+    "api_lifecycle_passed": true,
+    "ui_test_cleanup_passed": true,
+    "panel_url": "https://discord.com/channels/1492835611692765244/1558728156758933524/1558898250277199893"
   }
 }

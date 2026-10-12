@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "checked_at_utc": "2026-10-12 14:35:35 UTC",
+  "site": {
+    "url": "https://klew-hub-key-service.neataphid16.chatgpt.site",
+    "version": 12,
+    "source_commit": "efbf704538483d4bc56a43a6d622c811888d6549",
+    "saved_version_id": "appgprj_6aca5807e07c8191bfba974724c854d2~appgver_273177ec87c08191b69007566d26083b",
+    "deployment": "appgdep_6acceeb60a9481919814f6d75fb7443b",
+    "deployed_at_utc": "2026-10-12T14:29:31.156644+00:00",
+    "archive_sha256": "f88b6a3f5b8fb76355dc8fa38e1af762ac4b018b452f7e728cc210e9866dfb90"
+  },
+  "api_lifecycle": {
+    "stage": "completed",
+    "checks": [
+      {
+        "name": "admin login",
+        "pass": true
+      },
+      {
+        "name": "live atomic bulk creation",
+        "pass": true
+      },
+      {
+        "name": "unused key complete detail",
+        "pass": true
+      },
+      {
+        "name": "two existing user sessions",
+        "pass": true
+      },
+      {
+        "name": "first claim marks active",
+        "pass": true
+      },
+      {
+        "name": "active filter and summary",
+        "pass": true
+      },
+      {
+        "name": "actual Discord revocation persisted",
+        "pass": true
+      },
+      {
+        "name": "Discord revocation rejects both existing sessions",
+        "pass": true
+      },
+      {
+        "name": "revoked raw key cannot be reused",
+        "pass": true
+      },
+      {
+        "name": "repeated revoke preserves original timestamp",
+        "pass": true
+      }
+    ],
+    "passed": true,
+    "testKeysRevoked": 2,
+    "cleanupFailed": 0
+  },
+  "discord": {
+    "guild_id": "1492835611692765244",
+    "channel_id": "1558728156758933524",
+    "panel_message_id": "1558898250277199893",
+    "panel_url": "https://discord.com/channels/1492835611692765244/1558728156758933524/1558898250277199893",
+    "private": true,
+    "pinned": true,
+    "command_count": 7,
+    "panel_buttons": [
+      "Key oluştur",
+      "Keyleri yönet",
+      "Kullanım kayıtları",
+      "Servis durumu",
+      "Paneli yenile"
+    ],
+    "ui_checks": {
+      "creation": "2 keys / 1 hour / target 4484679888 / private result",
+      "list": "20 records / 5 per page",
+      "detail": "target, lifetime and timestamps verified",
+      "cancel": "kept active",
+      "confirmed_revoke": "private result and persisted revoked state",
+      "pagination": "next page verified",
+      "filter": "expired filter verified"
+    },
+    "ui_test_key_cleanup": {
+      "passed": true,
+      "createdThroughDiscordUI": 2,
+      "durationHours": 1,
+      "targetUserId": 4484679888,
+      "discordV12RevocationPersisted": true,
+      "testKeysRevoked": 2,
+      "firstRevocationTimestampPreserved": true
+    }
+  },
+  "checks": {
+    "discord_tests": 50,
+    "hub_tests": 44,
+    "lootlabs_tests": 31,
+    "notification_tests": 32,
+    "total_backend_tests": 157,
+    "workerd_tests_separate": 2,
+    "typescript": "passed",
+    "production_build": "passed",
+    "eslint": "passed"
+  },
+  "limits": {
+    "unknown_v11_404_cause": "not established",
+    "missing_private_message_fallback": "unit-tested; not triggered live",
+    "live_roblox_gameplay": "not tested",
+    "lootlabs_ad_completion": "not tested",
+    "actual_screenshot": "CDP capture timed out after 5000 ms"
+  }
+}

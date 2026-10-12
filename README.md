@@ -6,8 +6,8 @@ Bu sürüm, key doğrulaması için harici HTTP servisi kullanır. **Oyuna eski 
 
 | Bileşen | Doğrulanmış durum |
 | --- | --- |
-| HTTP API | Canlı anonim Hello yanıtı doğrulandı; key aktivasyonu bununla doğrulanmış olmaz. |
-| Discord endpoint | Canlı Discord endpoint doğrulandı; bot komutlarının uçtan uca çalışması ayrıca test edilmelidir. |
+| HTTP API | Canlı toplu üretim, aktivasyon, filtre ve detay doğrulandı. Discord iptali iki mevcut oturumu ve key'in yeniden kullanımını reddetti; test keyleri iptal edildi. |
+| Discord endpoint | Sabit özel kanal panelinde oluşturma formu, key listesi, ayrıntı, vazgeç ve onaylı iptal gerçek Discord UI ile doğrulandı. |
 | Discord bildirimleri | Canlı özel kanal mesaj teslimi doğrulandı; gerçek Roblox ve LootLabs olayları ayrıca denenmelidir. |
 | LootLabs | LootLabs kampanyası yapılandırıldı; canlı tamamlanma ve key teslimi henüz doğrulanmadı. |
 | LootLabs Start/Poll | Public Start 200 ile tek aşamalı kampanya bağlantısı verdi; Poll 200, pending ve key yok yanıtı verdi. Reklam tamamlanması/key teslimi test edilmedi. |
@@ -48,15 +48,17 @@ Bot, belirlenen sunucuda ve server tarafında doğrulanan Discord kullanıcı al
 
 | Komut | İşlem |
 | --- | --- |
-| `/klew-key duration:24 [target-roblox:123456]` | 1–720 saatlik key; isteğe bağlı Roblox UserId hedefi. |
-| `/klew-revoke key:KLEW-...` | Key'i ve bağlı erişimi iptal eder. |
+| `/klew-panel` | Özel kanalda yönetim kartı; oluşturma formu, key yönetimi, kayıtlar ve durum. |
+| `/klew-keys` | Beş kayıtlı sayfalar, durum filtresi, detay ve iptal onayı. |
+| `/klew-key duration:24 [quantity:3] [target-roblox:123456]` | 1–720 saatlik 1–10 key; isteğe bağlı Roblox UserId hedefi. |
+| `/klew-revoke key:KLEW-...` | Tam key veya 64 karakterlik kimlik ile iptal onayını açar. |
 | `/klew-logs` | Son 10 panel açılış kaydını yalnız yetkili kullanıcıya gösterir. |
 | `/klew-status` | Key servisi ve LootLabs yapılandırmasını gösterir. |
 | `/klew-help` | Kullanımı gösterir. |
 
 Key süre dolmadan aktifleştirilir; erişim süresi ilk doğrulamadan başlar. Hedef verilmediyse ilk kullanan Roblox UserId'ye bağlanır. Bu dış servis sürümünde Roblox kimlikleri istemcinin beyanıdır; OAuth ile doğrulanmış değildir.
 
-Discord yanıtları private'dır. Aynı interaction tekrar gelirse ikinci key üretilmez. Kesintide key yanıtı otomatik kurtarılamayabilir. Mevcut backend admin başına dakikada 10 komut sınırı uygular; yardım komutu bu sınırı kullanmaz. Ayrıntılı kurulum geliştirici paketindeki `work/klew-key-service/DISCORD-KURULUM.md` dosyasındadır; `env.example` yalnız boş/örnek ayarlar içerir.
+Yönetim kartı belirlenen özel kanaldadır; tam key oluşturma, liste ve ayrıntı yanıtlarını yalnız işlemi yapan admin görür. Tam key yalnız oluşturma yanıtında verilir; sonraki listede kimlik ve durum gösterilir. İptal onay ister, vazgeç key'i korur, tekrar iptal ilk iptal tarihini değiştirmez. Aynı interaction tekrar gelirse ikinci key üretilmez. Kesintide key yanıtı otomatik kurtarılamayabilir. Discord yönetimi oyuncu giriş kotasını tüketmez; admin ve işlem başına ayrı kotalar vardır: Hello 120, liste/detay 60, oluşturma/iptal 30 istek/dakika. Ayrıntılı kurulum geliştirici paketindeki `work/klew-key-service/DISCORD-KURULUM.md` dosyasındadır; `env.example` yalnız boş/örnek ayarlar içerir.
 
 Key oluşturma, ilk aktifleştirme ve ayrı panel açılışları kalıcı bir bildirim kuyruğuna kaydedilir. Bot, yapılandırılmış özel kanala saat, bağlantı IP'si ve scriptin bildirdiği Roblox kullanıcı adı/UserId ile mesaj gönderir. Key alınırken Roblox kimliği henüz bilinmeyebilir; aktifleştirmede bildirilir. Discord'dan oluşturulan key'in IP'si bilinmiyor olarak gösterilir. Tam key veya oturum tokenı bildirim mesajına yazılmaz; kısa key izi ve **Key iptal et** düğmesi vardır. Düğme Discord imzası, sunucu, kanal ve admin ID'si doğrulanarak çalışır. Kanalın özel olduğu her gönderimde kontrol edilir; sunucu Administrator yetkisine sahip kişiler Discord gereği yine görebilir.
 
@@ -87,7 +89,9 @@ Ayar değişiklikleri, renk, kilit tuşu ve otomatik tuş tercihi saklanır; ge�
 
 Güncel okunabilir istemci ve paketlenmiş `KlewHubV1.lua` üzerinde **141'er test** geçti; taklit Roblox ortamında çalışan mantık testleridir. Kaynak/payload için Luau derlemesi ve yerel adlardan bağımsız AST eşitliği ayrıca kontrol edilir.
 
-HTTP backend için **129 test** geçti: Discord 34, Hub 32, LootLabs 31, bildirim 32. Yerel SQLite ve taklit HTTP/Discord yanıtları kullanılır; canlı Discord botu veya LootLabs görev testi değildir.
+HTTP backend için **157 test** geçti: Discord 50, Hub 44, LootLabs 31, bildirim 32. Yerel SQLite ve taklit HTTP/Discord yanıtları kullanılır; canlı Discord botu veya LootLabs görev testi değildir.
+
+12 Ekim canlı Discord kontrolünde sabit panelden 2 test key'i üretildi; liste, detay, vazgeç ve onaylı iptal denendi. İptal edilen key iki açık tokenla reddedildi. Test keyleri temizlendi. Sürüm, kanal ve canlı sonuç kaydı [KlewHubV1-discord-admin-live-check.json](KlewHubV1-discord-admin-live-check.json) içindedir. [Özel yönetim panelini aç](https://discord.com/channels/1492835611692765244/1558728156758933524/1558898250277199893).
 
 Ek **2 gerçek workerd kontrolü**, dış ağ kapalı HTTP taklidiyle Worker fetch çağrılarının receiver ve yönlendirme davranışını doğrular.
 
