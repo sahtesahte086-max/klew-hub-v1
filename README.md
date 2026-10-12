@@ -36,7 +36,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/sahtesahte086-max/kle
 
 Bu satır, yükleme yöntemini ve gereken HTTP POST adaptörünü sağlayan ortamda istemciyi indirir. Repo yolu aynı kaldı. GitHub Raw payload'ı yerel sürümün SHA-256 hash'iyle eşleşerek doğrulandı.
 
-Doğrulanan payload commit'i: `fb7205fd2dd0603d59f9b31bc15965e120dc3648`. Sonraki belge commit'leri payload değiştiği anlamına gelmez.
+Doğrulanan payload commit'i: `dfbcf1bead867073465221e96103fd8ed1da2bf7`. Sonraki belge commit'leri payload değiştiği anlamına gelmez.
 
 `KlewHubV1.lua` değişken adları kısaltılmış dağıtım dosyasıdır. **Public GitHub Raw bağlantısı kapalı kaynak sağlamaz.** İndiren kişi kodu alabilir; obfuscation yalnız okumayı zorlaştırır. `LICENSE.txt` kullanım koşullarını belirtir, teknik gizlilik sağlamaz. Secrets ve bot tokenı dağıtım dosyalarına konulmaz.
 
@@ -72,11 +72,11 @@ Ayar değişiklikleri, renk, kilit tuşu ve otomatik tuş tercihi saklanır; ge�
 
 ## ESP ve kamera hedef takibi
 
-- iOS tarzı 600×620 koyu yarı saydam menü; masaüstünde sol gezinme, dar ekranda üst sekmeler. Kırmızı anahtarlar, yuvarlak kartlar, logo `88391726271714` ve açılış animasyonu.
+- Önceki 430×580 iOS tarzı koyu menü geri getirildi; yatay pill sekmeler, beyaz aktif sekme, kırmızı anahtarlar ve yuvarlak kartlar. Logo `88391726271714` ve açılış animasyonu korunur; panel kullanılabilir canvas boyutuna göre küçülür.
 - ESP'de takım arkadaşlarını gizleme varsayılan açık; kutu/isim/sağlık/mesafe isteğe bağlı. Yenileme 30–240 Hz, varsayılan 60 Hz; gerçek hız FPS'yi aşmaz.
 - Kamera takibi kendi takımına kilitlenmez. Ayarlanabilir kilit tuşu, basılı tutma/aç-kapat modu, KİLİT düğmesi ve gamepad L2.
 - Aim açıkken FOV halkası görünür. Kesin/yumuşak takip seçilebilir; aim ve ESP mesafeleri ayrıdır.
-- **Hedefi koru** ana sayfada ve varsayılan açıktır; kayıtlı tercih korunur. FOV/ekran sınırı ilk hedef seçiminde kullanılır; mevcut geçerli kilit WASD veya fare hareketinde korunur. Ölüm, takım, seçilen parçanın kaybolması, mesafe, görüş hattı ve odak kaybı kontrolleri sürer. **Basılı tut** modunda kilit tuşu basılı kalmalıdır; bırakıldığında kilit çözülür. **Aç / kapat** modunda bir kez basılır, yeniden basılarak bırakılır.
+- **Hedefi koru** gelişmiş ayarlardadır ve varsayılan açıktır; kayıtlı tercih korunur. FOV/ekran sınırı ilk hedef seçiminde kullanılır; mevcut geçerli kilit WASD veya fare hareketinde korunur. Ölüm, takım, seçilen parçanın kaybolması, mesafe, görüş hattı ve odak kaybı kontrolleri sürer. **Basılı tut** modunda kilit tuşu basılı kalmalıdır; bırakıldığında kilit çözülür. **Aç / kapat** modunda bir kez basılır, yeniden basılarak bırakılır.
 - İsteğe bağlı otomatik basılı tuş: Sol Shift, Sol Ctrl veya Boşluk; hedef kilitliyken ya da kilitli + sol tık sırasında. Varsayılan kapalıdır. Menü/chat/oyun odağı kaybı, hedef kaybı, yetki iptali ve kapanışta tuş bırakılır; geçici key-up hatası için kapanıştan bağımsız sınırlı tekrar denemesi vardır. Resmî [VirtualInput](https://create.roblox.com/docs/reference/engine/classes/VirtualInput) API'si desteklenmiyorsa ayarda durum gösterilir. Gerçek oyun input desteği test edilmedi. AI modu eklenmedi.
 - Right Shift menüyü açar; başlıktan sürüklenir; × arayüz ve çizimleri kapatır. İstemciye yüklenmemiş karakterler hedeflenemez.
 

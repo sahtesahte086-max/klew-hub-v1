@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "checked_at_utc": "2026-10-12 15:16:25 UTC",
-  "source_sha256": "fb6e692b9258da239d1a6ca52a98e5ff48345374fa5ddc1f94ae30dc77ae05c7",
-  "payload_sha256": "2d71b08d85626166ccbf0116a9d399782ac0e1e8045c500cf8e676e5229fd6ba",
+  "checked_at_utc": "2026-10-12 15:35:44 UTC",
+  "source_sha256": "dea7fc2bb0dc9124b38560a9278f331ee5c7757cea01697de6fe271a40e50664",
+  "payload_sha256": "08709b142c3df7e86433280cd584ee1e9d7fcc310a35b09bb04cef9f50a3af4b",
   "source_tests_passed": 156,
   "payload_tests_passed": 156,
   "failures": 0,
@@ -25,17 +25,14 @@
   "sticky_disabled": "closest eligible target selected each frame",
   "gui": {
     "desktop_size": [
-      600,
-      620
-    ],
-    "narrow_size": [
       430,
-      620
+      580
     ],
-    "narrow_breakpoint_pixels": 640,
-    "theme": "red and dark translucent control center",
+    "theme": "previous dark iOS-style layout with horizontal pill tabs and red switches",
     "logo_asset_id": "88391726271714",
-    "sticky_control": "main page"
+    "sticky_control": "advanced settings",
+    "rollback_reference_commit": "1b9d899fc7572dbe860ab7eae03234bf3f7a8668",
+    "movement_fix_preserved": true
   },
   "validation": {
     "luau_compile": "passed",

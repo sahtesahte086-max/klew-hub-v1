@@ -1,9 +1,9 @@
 {
   "schema_version": 4,
   "release_model": "external_http_key_service_with_discord_admin",
-  "generated_at_utc": "2026-10-12T15:25:05.156386+00:00",
+  "generated_at_utc": "2026-10-12T15:35:45.590649+00:00",
   "loader_url": "https://raw.githubusercontent.com/sahtesahte086-max/klew-hub-v1/main/KlewHubV1.lua",
-  "github_verified_payload_commit": "fb7205fd2dd0603d59f9b31bc15965e120dc3648",
+  "github_verified_payload_commit": "dfbcf1bead867073465221e96103fd8ed1da2bf7",
   "client_config_key_service_url": "https://klew-hub-key-service.neataphid16.chatgpt.site",
   "publication_status": {
     "public_portal": "public",
@@ -25,20 +25,20 @@
   },
   "artifacts": {
     "KlewHubV1.client.luau": {
-      "bytes": 87489,
-      "sha256": "fb6e692b9258da239d1a6ca52a98e5ff48345374fa5ddc1f94ae30dc77ae05c7",
+      "bytes": 84916,
+      "sha256": "dea7fc2bb0dc9124b38560a9278f331ee5c7757cea01697de6fe271a40e50664",
       "role": "current_readable_http_client",
       "ast_matches_current_source": true
     },
     "KlewHubV1.lua": {
-      "bytes": 91489,
-      "sha256": "2d71b08d85626166ccbf0116a9d399782ac0e1e8045c500cf8e676e5229fd6ba",
+      "bytes": 88030,
+      "sha256": "08709b142c3df7e86433280cd584ee1e9d7fcc310a35b09bb04cef9f50a3af4b",
       "role": "current_obfuscated_http_client",
       "ast_matches_current_source": true
     },
     "KlewHubV1.Studio-private.luau": {
-      "bytes": 91489,
-      "sha256": "2d71b08d85626166ccbf0116a9d399782ac0e1e8045c500cf8e676e5229fd6ba",
+      "bytes": 88030,
+      "sha256": "08709b142c3df7e86433280cd584ee1e9d7fcc310a35b09bb04cef9f50a3af4b",
       "role": "current_payload_compatibility_filename_requires_http_adapter",
       "ast_matches_current_source": true
     },
@@ -48,8 +48,8 @@
       "role": "raw_download_loader_requires_supported_environment"
     },
     "github-distribution/KlewHubV1.lua": {
-      "bytes": 91489,
-      "sha256": "2d71b08d85626166ccbf0116a9d399782ac0e1e8045c500cf8e676e5229fd6ba",
+      "bytes": 88030,
+      "sha256": "08709b142c3df7e86433280cd584ee1e9d7fcc310a35b09bb04cef9f50a3af4b",
       "role": "github_payload_staging_copy",
       "ast_matches_current_source": true,
       "identical_to_current_local_payload": true
@@ -65,13 +65,13 @@
       "role": "github_live_admin_receipt_copy"
     },
     "KlewHubV1-client-motion-check.json": {
-      "bytes": 1564,
-      "sha256": "8d75e97f5eff5980ff76bcc7ecba607681c98d9a28f4f67f6a9b60841667bf51",
+      "bytes": 1678,
+      "sha256": "a14a298c0150f9da82850c77d836f4db3c4bdc134a0c12c145790cbaa4dfa0d6",
       "role": "client_motion_lock_verification_receipt"
     },
     "github-distribution/KlewHubV1-client-motion-check.json": {
-      "bytes": 1564,
-      "sha256": "8d75e97f5eff5980ff76bcc7ecba607681c98d9a28f4f67f6a9b60841667bf51",
+      "bytes": 1678,
+      "sha256": "a14a298c0150f9da82850c77d836f4db3c4bdc134a0c12c145790cbaa4dfa0d6",
       "role": "github_client_motion_receipt_copy"
     },
     "KlewHubV1.server.luau": {
