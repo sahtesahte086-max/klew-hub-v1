@@ -30,7 +30,7 @@ Canlı kontrolde sonuç sayfasındaki istemci yönlendirmesi portal dönüşünd
 
 ## Doğrulamanın sınırları
 
-İstemcinin okunabilir ve dağıtım kopyalarında 141'er taklit Roblox kontrolü geçti. Luau derlemesi ve AST eşitliği doğrulandı. Canlı API eski boş-dizi isteğine 200 döndürüyor; GitHub Raw dosyası yerel dağıtım dosyasıyla birebir eşleşiyor.
+İstemcinin güncel okunabilir ve dağıtım kopyalarında 156'şar taklit Roblox kontrolü geçti. Luau derlemesi ve AST eşitliği doğrulandı. Canlı API eski boş-dizi isteğine 200 döndürüyor; GitHub Raw doğrulaması sürüm manifestinde belirtilir.
 
 Backend ve web arayüzü testleri gerçek kaynak kodunu, SQLite ve taklit HTTP cevaplarını kullanır. Ayrıca aşağıda belirtilen canlı API ve Discord panel kontrolleri yapılmıştır. Gerçek Roblox çok oyunculu oturumu veya LootLabs reklam/insan doğrulaması tamamlanarak key teslimi bu raporla test edilmiş sayılmaz.
 
@@ -42,7 +42,15 @@ Geçerli normal oturum tokenı ve beyaz listedeki ayarlar hesap/servis kapsamın
 
 Main gelişmiş ayarlarında isteğe bağlı Sol Shift/Sol Ctrl/Boşluk, kilitliyken veya kilitli + ateş ederken modu bulunur. Menü, sohbet, odak kaybı, hedef kaybı, izin iptali ve kapanışta tuş bırakılır. Kapanış sırasında başarısız key-up tekrarının render döngüsü durduktan sonra kaybolması düzeltildi; sınırlı bağımsız tekrar ve eski denemelerin yeni tuş basışını bırakmasını engelleyen nesil kontrolü eklendi. Resmî Roblox VirtualInput API'si desteklenmiyorsa durum gösterilir. Gerçek oyun input desteği test edilmedi. AI modu eklenmedi.
 
-Menü koyu yarı saydam yuvarlak kartlar, beyaz sekmeler ve kırmızı iOS tarzı anahtarlarla yenilendi. Logo 88391726271714 kullanılıyor. HTML/JPG önizlemeleri gerçek Roblox ekran görüntüsü değildir.
+Menü 600×620 koyu yarı saydam kontrol merkezi olarak yenilendi. Sol gezinme alanı, 22 px yuvarlak panel, 14 px yuvarlak kartlar, kırmızı iOS tarzı anahtarlar ve daha büyük sürgüler bulunur. Dar ekranda 430 px düzen ve üst sekmeler kullanılır; panel gerçek kullanılabilir canvas boyutuna göre küçülür. Logo 88391726271714 korunur. HTML/JPG önizlemeleri gerçek Roblox ekran görüntüsü değildir.
+
+## WASD ve fare hareketinde hedef kilidi düşüyordu
+
+`chooseTarget` içindeki Sticky dalı ilk edinme için kullanılan `targetPoint` kontrollerini tekrar uyguluyordu. Fare merkezinin kayması veya normal kameranın karakter hareketi sırasında bakışı/konumu değiştirmesi, seçili hedefi FOV/ekran sınırı dışına taşıyınca kilit kayboluyordu. WASD ve MouseMovement olayları doğrudan kilidi bırakmıyordu.
+
+Mevcut Sticky hedefin korunması ilk hedef ediniminden ayrıldı. Yeni hedefler hâlâ FOV içinde, ekranda ve kamera önünde seçilir. Mevcut hedef karakter, takım, seçilen parça, mesafe ve görüş hattı kontrollerini geçtiğinde kamera/fare hareketinde korunur. Ölüm, takım değişikliği, duvar, mesafe sınırı veya odak kaybında bırakılır. Basılı tut modunda kilit tuşunu bırakmak, aç/kapat modunda yeniden basmak kilidi çözer. Sticky kapalıysa en yakın uygun hedef her kare yeniden seçilir. `Hedefi koru` ana sayfaya taşındı; kayıtlı tercih değiştirilmez.
+
+15 yeni regresyon gerçek kaynak ve render/input yolunda çalıştırıldı. Eski kaynakta fare FOV sıçraması, WASD ile kamera/karakter konum değişikliği ve kamera arkasına geçen hedef testleri başarısızdı. Düzeltilen kaynak ve obfuscation uygulanmış payload'da 156'şar test, sıfır hata ile geçti. AST eşitliği ve Luau derlemesi başarılı. Bağlı Roblox Studio bulunmadığından gerçek oyun testi yapılamadı. Sonuçlar `KlewHubV1-client-motion-check.json` dosyasında tutulur.
 
 ## Bildirimler kuyrukta kalıyordu
 

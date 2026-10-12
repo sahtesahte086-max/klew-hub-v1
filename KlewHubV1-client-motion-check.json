@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "checked_at_utc": "2026-10-12 15:16:25 UTC",
+  "source_sha256": "fb6e692b9258da239d1a6ca52a98e5ff48345374fa5ddc1f94ae30dc77ae05c7",
+  "payload_sha256": "2d71b08d85626166ccbf0116a9d399782ac0e1e8045c500cf8e676e5229fd6ba",
+  "source_tests_passed": 156,
+  "payload_tests_passed": 156,
+  "failures": 0,
+  "new_motion_regressions": 15,
+  "old_source_reproductions_failed": [
+    "Mouse center moves outside acquisition FOV",
+    "WASD translation moves acquired target outside viewport",
+    "Camera yaw places acquired target behind viewport"
+  ],
+  "retention_preserves": [
+    "enemy/team eligibility",
+    "living loaded character",
+    "selected target part",
+    "configured distance limit",
+    "line of sight",
+    "hold release",
+    "window and text focus suppression"
+  ],
+  "acquisition": "FOV, positive viewport depth and on-screen requirements preserved",
+  "sticky_disabled": "closest eligible target selected each frame",
+  "gui": {
+    "desktop_size": [
+      600,
+      620
+    ],
+    "narrow_size": [
+      430,
+      620
+    ],
+    "narrow_breakpoint_pixels": 640,
+    "theme": "red and dark translucent control center",
+    "logo_asset_id": "88391726271714",
+    "sticky_control": "main page"
+  },
+  "validation": {
+    "luau_compile": "passed",
+    "binding_normalized_ast": "equal",
+    "test_execution": "actual complete client source and packaged payload in mocked Roblox environment",
+    "studio_connections": 0,
+    "live_gameplay": "not tested",
+    "html_preview": "layout preview; not a Roblox screenshot"
+  }
+}
