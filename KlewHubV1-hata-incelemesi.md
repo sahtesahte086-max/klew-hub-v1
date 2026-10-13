@@ -102,4 +102,18 @@ Son v12 canlı UI iptal akışı da doğrulandı: bu çalışmaya ait test key'i
 
 12 Ekim v12 doğrulamasında **157 backend testi** geçti: Discord 50, Hub 44, LootLabs 31, bildirim 32. Ek **2 gerçek workerd fetch/receiver testi** ayrı olarak geçti. ESLint, TypeScript ve üretim build'i başarılı oldu. 13 Ekim menü/key giriş düzeltmesi backend değişikliği veya yeni canlı Discord yayını gerektirmez; bu backend ve canlı panel sonuçları tarihli geçmiş kanıt olarak korunur.
 
-Tarayıcı ekran görüntüsü alma denemesi CDP'nin 5000 ms zaman aşımıyla başarısız oldu; bu turdan gerçek ekran görüntüsü mevcut değildir. Canlı kontroller gerçek Roblox çok oyunculu oturumu, oyun input desteği veya LootLabs reklam görevinin tamamlanması olarak sunulmaz.
+12 Ekim Discord kontrolünde tarayıcı ekran görüntüsü alma denemesi zaman aşımıyla başarısız olmuştu; o Discord kontrolünden gerçek ekran görüntüsü mevcut değildir. Canlı kontroller gerçek Roblox çok oyunculu oturumu, oyun input desteği veya LootLabs reklam görevinin tamamlanması olarak sunulmaz.
+
+## 13 Ekim son tarama ve v13 portal düzeltmesi
+
+Güncel kaynak ve paket **187 istemci kontrolünü**, Luau derlemesini ve binding-normalized AST eşitliğini geçti. Dokuz yeni yaşam döngüsü kontrolü eski kaynakta 184 toplam kontrolün 8'ini başarısız gösterdi. Düzeltme sonrası bunların tamamı geçti. Ardından eski Hello sürerken girişi unutma veya lease kaybından sonra yeni key gönderme için üç ek kontrol, düzeltme öncesi üç hata üretti; son kaynak ve paket 187/0 sonucuna ulaştı.
+
+Süre ve lease kontrolü kamera yazımından önce çalışır; kamera yokken de bağlantı kontrolü sürer. Önceki nesle ait tuş bırakma işi yeni bir bırakma denemesini engelleyemez. Erişim GUI'si dışarıdan silindiğinde runtime temizlenir. Bozuk servis adresi ve geçersiz başarı/süre alanları kontrollü hata verir. Eski Hello yanıtı reddedilirken güncel revizyonda bekleyen yeni key gönderimi devam eder.
+
+Portalın geç yanıt hatası da düzeltildi: 15 saniyelik deadline sonrasında başarılı fetch veya JSON gövdesi gelse bile işlem kabul edilmez. Eski kaynakta ilk yeni Hello kontrolü bu hatayı yeniden üretti. Beş yeni deadline/yeniden deneme kontrolü dahil portal **44**, key sonuç sayfası **26** komponent taklit kontrolünü geçti. Discord 50, Hub 44, LootLabs 31 ve bildirim 32 olmak üzere **157 backend kontrolü**, ayrıca **2 gerçek workerd fetch/receiver kontrolü** yeniden çalıştırılarak geçti.
+
+Portal v13, kaynak `eef39457ec1773c10e0f039899f1974dc688952e` ve deployment `appgdep_6ace49655fb88191b748ac90ce2fa8da` ile 13 Ekim 2026 15:08:40 UTC'de başarıyla yayımlandı; audience public ve secret revision 4 korundu. Yayın sonrası anonim Hello 200 / ok:true / authorized:false / storageReady:true / lootlabsConfigured:true döndü. Bu turda canlı key aktivasyonu, Discord yönetim işlemi veya LootLabs görevi tamamlanması denenmedi; önceki tarihli kanıtlar ayrı tutulur.
+
+Menüde Main varsayılan olarak ESP ve Settings kartlarını gösterir; aimbot ve Hedefi koru ayrı Aimbot sekmesindedir. Referansa göre panel 482×360, sidebar 160 px, satırlar 40 px, kart aralıkları 5 px ve cyan anahtarlar kullanır. Büyütülmüş panel 680×500'dür. Key ekranı aynı gri pencere stilini kullanır. Logo ve 29 gerçek ayar korunur; örnek görseldeki oyuna özel sahte kontroller eklenmez. HTML önizlemesi 11 DOM kontrolünü geçti; bu bir tasarım demosudur.
+
+Bu taramada bağlı Roblox Studio yoktu. Canlı Roblox render ve input davranışı doğrulanmış değildir. Ayrıntılı, sır içermeyen kontrol kaydı: [Son tarama](KlewHubV1-final-audit-check.json).

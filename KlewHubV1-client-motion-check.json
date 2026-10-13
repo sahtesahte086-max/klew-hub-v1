@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "checked_at_utc": "2026-10-13T14:33:57.287290+00:00",
-  "source_sha256": "087efad797201d0623dda350480dcfaea8e8ee1295d674754f95ce18356f2cb4",
-  "payload_sha256": "18a4f7c36e619bc183a8e7d58279323f86918b34f84601b043df70e554224fe7",
-  "source_tests_passed": 175,
-  "payload_tests_passed": 175,
+  "checked_at_utc": "2026-10-13T15:14:23.629733+00:00",
+  "source_sha256": "bd3f657980ddc4806d2f19843249cc29f885e4afe458e27d439c6a7c0255a81c",
+  "payload_sha256": "df9f8e0fcd6901ca320be501d3c3cfd39a51f480751eb6db8c1f21029fa66b1f",
+  "source_tests_passed": 187,
+  "payload_tests_passed": 187,
   "failures": 0,
   "new_motion_regressions": 15,
   "old_source_reproductions_failed": [
@@ -34,7 +34,17 @@
     ],
     "theme": "reference dark gray translucent window; left sidebar; cyan switches",
     "logo_asset_id": "88391726271714",
-    "sticky_control": "Main",
+    "sticky_control": "Aimbot",
+    "default_page": "Main",
+    "main_sections": [
+      "ESP",
+      "Settings"
+    ],
+    "pages": [
+      "Main",
+      "Aimbot",
+      "Settings"
+    ],
     "movement_fix_preserved": true
   },
   "validation": {

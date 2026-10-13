@@ -1,9 +1,9 @@
 {
   "schema_version": 4,
   "release_model": "external_http_key_service_with_discord_admin",
-  "generated_at_utc": "2026-10-13T14:35:30.667264+00:00",
+  "generated_at_utc": "2026-10-13T15:14:57.456200+00:00",
   "loader_url": "https://raw.githubusercontent.com/sahtesahte086-max/klew-hub-v1/main/KlewHubV1.lua",
-  "github_verified_payload_commit": "c33db2bac643e05ebed3bf5430cd1f0461a9c133",
+  "github_verified_payload_commit": "ce59906e9a9780347040c9acbdc4c145a550a887",
   "client_config_key_service_url": "https://klew-hub-key-service.neataphid16.chatgpt.site",
   "publication_status": {
     "public_portal": "public",
@@ -35,26 +35,36 @@
       "width": 680,
       "height": 500
     },
-    "sticky_control_page": "Main",
+    "default_page": "Main",
+    "main_sections": [
+      "ESP",
+      "Settings"
+    ],
+    "pages": [
+      "Main",
+      "Aimbot",
+      "Settings"
+    ],
+    "sticky_control_page": "Aimbot",
     "saved_sticky_preference_preserved": true,
     "advanced_groups_collapsible": true
   },
   "artifacts": {
     "KlewHubV1.client.luau": {
-      "bytes": 88874,
-      "sha256": "087efad797201d0623dda350480dcfaea8e8ee1295d674754f95ce18356f2cb4",
+      "bytes": 89755,
+      "sha256": "bd3f657980ddc4806d2f19843249cc29f885e4afe458e27d439c6a7c0255a81c",
       "role": "current_readable_http_client",
       "ast_matches_current_source": true
     },
     "KlewHubV1.lua": {
-      "bytes": 91383,
-      "sha256": "18a4f7c36e619bc183a8e7d58279323f86918b34f84601b043df70e554224fe7",
+      "bytes": 92182,
+      "sha256": "df9f8e0fcd6901ca320be501d3c3cfd39a51f480751eb6db8c1f21029fa66b1f",
       "role": "current_obfuscated_http_client",
       "ast_matches_current_source": true
     },
     "KlewHubV1.Studio-private.luau": {
-      "bytes": 91383,
-      "sha256": "18a4f7c36e619bc183a8e7d58279323f86918b34f84601b043df70e554224fe7",
+      "bytes": 92182,
+      "sha256": "df9f8e0fcd6901ca320be501d3c3cfd39a51f480751eb6db8c1f21029fa66b1f",
       "role": "current_payload_compatibility_filename_requires_http_adapter",
       "ast_matches_current_source": true
     },
@@ -64,8 +74,8 @@
       "role": "raw_download_loader_requires_supported_environment"
     },
     "github-distribution/KlewHubV1.lua": {
-      "bytes": 91383,
-      "sha256": "18a4f7c36e619bc183a8e7d58279323f86918b34f84601b043df70e554224fe7",
+      "bytes": 92182,
+      "sha256": "df9f8e0fcd6901ca320be501d3c3cfd39a51f480751eb6db8c1f21029fa66b1f",
       "role": "github_payload_staging_copy",
       "ast_matches_current_source": true,
       "identical_to_current_local_payload": true
@@ -81,24 +91,35 @@
       "role": "github_live_admin_receipt_copy"
     },
     "KlewHubV1-client-motion-check.json": {
-      "bytes": 1646,
-      "sha256": "c70a62c14a7bc971457e6a4a3b0eef483007b35872b9b4aa1348f039967c37a7",
+      "bytes": 1815,
+      "sha256": "6027daa9bdc618b57b75cc580bce12f3a35b2e8930c98fbed24f6f314ec2c5ac",
       "role": "client_motion_lock_verification_receipt"
     },
     "github-distribution/KlewHubV1-client-motion-check.json": {
-      "bytes": 1646,
-      "sha256": "c70a62c14a7bc971457e6a4a3b0eef483007b35872b9b4aa1348f039967c37a7",
+      "bytes": 1815,
+      "sha256": "6027daa9bdc618b57b75cc580bce12f3a35b2e8930c98fbed24f6f314ec2c5ac",
       "role": "github_client_motion_receipt_copy"
     },
     "KlewHubV1-key-entry-check.json": {
-      "bytes": 1848,
-      "sha256": "38e3fb9ca3b40e67815e13b4c11b874dfd597ac1ed42151259b32b96b690b4ef",
+      "bytes": 2203,
+      "sha256": "6d3c27c363a7e5f7ec8e687b3fbe0886b462cfc242c85146abec9208d3bfa814",
       "role": "client_key_entry_verification_receipt"
     },
     "github-distribution/KlewHubV1-key-entry-check.json": {
-      "bytes": 1848,
-      "sha256": "38e3fb9ca3b40e67815e13b4c11b874dfd597ac1ed42151259b32b96b690b4ef",
+      "bytes": 2203,
+      "sha256": "6d3c27c363a7e5f7ec8e687b3fbe0886b462cfc242c85146abec9208d3bfa814",
       "role": "github_client_key_entry_receipt_copy",
+      "identical_to_current_local_receipt": true
+    },
+    "KlewHubV1-final-audit-check.json": {
+      "bytes": 3188,
+      "sha256": "3474af0207a306d31369a66d412e5c93ed2c5191a53bc7ebef748991c2832cc8",
+      "role": "client_final_audit_verification_receipt"
+    },
+    "github-distribution/KlewHubV1-final-audit-check.json": {
+      "bytes": 3188,
+      "sha256": "3474af0207a306d31369a66d412e5c93ed2c5191a53bc7ebef748991c2832cc8",
+      "role": "github_client_final_audit_receipt_copy",
       "identical_to_current_local_receipt": true
     },
     "KlewHubV1.server.luau": {
@@ -145,20 +166,26 @@
     }
   },
   "validation": {
-    "client_source_and_packaged_payload_tests_each": 175,
+    "client_source_and_packaged_payload_tests_each": 187,
     "client_test_artifacts": [
       "KlewHubV1.client.luau",
       "KlewHubV1.lua"
     ],
+    "client_final_audit_receipt": "KlewHubV1-final-audit-check.json",
     "client_key_entry_regressions": {
-      "new_checks": 19,
-      "before_fix_full_suite": {
-        "passed": 166,
-        "failed": 9
-      },
-      "after_fix_full_suite": {
-        "passed": 175,
-        "failed": 0
+      "current_full_suite_tests_each": 187,
+      "initial_key_entry_fix_history": {
+        "checked_date_utc": "2026-10-13",
+        "new_checks": 19,
+        "before_fix_full_suite": {
+          "passed": 166,
+          "failed": 9
+        },
+        "after_fix_full_suite": {
+          "passed": 175,
+          "failed": 0
+        },
+        "scope": "historical initial key-entry fix; not the latest full-suite total"
       },
       "receipt": "KlewHubV1-key-entry-check.json",
       "scope": "actual_client_FocusLost_Activated_and_mock_HTTP_boundaries",
@@ -172,7 +199,7 @@
       "lootlabs": 31,
       "notifications": 32
     },
-    "portal_actual_component_mock_checks": 39,
+    "portal_actual_component_mock_checks": 44,
     "result_page_actual_component_mock_checks": 26,
     "test_counts_provenance": "release_check_results_supplied_on_command_line; generator_does_not_rerun_runtime_tests",
     "current_source_normalized_ast_equal": {

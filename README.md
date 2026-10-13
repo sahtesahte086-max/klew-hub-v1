@@ -36,7 +36,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/sahtesahte086-max/kle
 
 Bu satır, yükleme yöntemini ve gereken HTTP POST adaptörünü sağlayan ortamda istemciyi indirir. Repo yolu aynı kaldı. GitHub Raw payload'ı yerel sürümün SHA-256 hash'iyle eşleşerek doğrulandı.
 
-Doğrulanan payload commit'i: `c33db2bac643e05ebed3bf5430cd1f0461a9c133`. Sonraki belge commit'leri payload değiştiği anlamına gelmez.
+Doğrulanan payload commit'i: `ce59906e9a9780347040c9acbdc4c145a550a887`. Sonraki belge commit'leri payload değiştiği anlamına gelmez.
 
 `KlewHubV1.lua` değişken adları kısaltılmış dağıtım dosyasıdır. **Public GitHub Raw bağlantısı kapalı kaynak sağlamaz.** İndiren kişi kodu alabilir; obfuscation yalnız okumayı zorlaştırır. `LICENSE.txt` kullanım koşullarını belirtir, teknik gizlilik sağlamaz. Secrets ve bot tokenı dağıtım dosyalarına konulmaz.
 
@@ -74,11 +74,11 @@ Ayar değişiklikleri, renk, kilit tuşu ve otomatik tuş tercihi saklanır; ge�
 
 ## ESP ve kamera hedef takibi
 
-- 13 Ekim referansına göre 482×360 gri/cyan menü, solda gezinme, sade kartlar ve açılır gelişmiş ayar grupları kullanılır. Büyütme düğmesi paneli 680×500 yapar; panel kullanılabilir canvas boyutuna göre küçülür. Logo `88391726271714` ve açılış animasyonu korunur.
+- 13 Ekim referansına göre 482×360 gri/cyan menü, solda gezinme, sade kartlar ve açılır gelişmiş ayar grupları kullanılır. Varsayılan **Main** sayfasında **ESP** ve **Settings** bölümleri bulunur; kamera takibi ayrı **Aimbot** sekmesindedir. Büyütme düğmesi paneli 680×500 yapar; panel kullanılabilir canvas boyutuna göre küçülür. Logo `88391726271714` ve açılış animasyonu korunur.
 - ESP'de takım arkadaşlarını gizleme varsayılan açık; kutu/isim/sağlık/mesafe isteğe bağlı. Yenileme 30–240 Hz, varsayılan 60 Hz; gerçek hız FPS'yi aşmaz.
 - Kamera takibi kendi takımına kilitlenmez. Ayarlanabilir kilit tuşu, basılı tutma/aç-kapat modu, KİLİT düğmesi ve gamepad L2.
 - Aim açıkken FOV halkası görünür. Kesin/yumuşak takip seçilebilir; aim ve ESP mesafeleri ayrıdır.
-- **Hedefi koru** Main sayfasında görünür ve varsayılan açıktır; kayıtlı tercih korunur. FOV/ekran sınırı ilk hedef seçiminde kullanılır; mevcut geçerli kilit WASD veya fare hareketinde korunur. Ölüm, takım, seçilen parçanın kaybolması, mesafe, görüş hattı ve odak kaybı kontrolleri sürer. **Basılı tut** modunda kilit tuşu basılı kalmalıdır; bırakıldığında kilit çözülür. **Aç / kapat** modunda bir kez basılır, yeniden basılarak bırakılır.
+- **Hedefi koru** Aimbot sayfasında görünür ve varsayılan açıktır; kayıtlı tercih korunur. FOV/ekran sınırı ilk hedef seçiminde kullanılır; mevcut geçerli kilit WASD veya fare hareketinde korunur. Ölüm, takım, seçilen parçanın kaybolması, mesafe, görüş hattı ve odak kaybı kontrolleri sürer. **Basılı tut** modunda kilit tuşu basılı kalmalıdır; bırakıldığında kilit çözülür. **Aç / kapat** modunda bir kez basılır, yeniden basılarak bırakılır.
 - İsteğe bağlı otomatik basılı tuş: Sol Shift, Sol Ctrl veya Boşluk; hedef kilitliyken ya da kilitli + sol tık sırasında. Varsayılan kapalıdır. Menü/chat/oyun odağı kaybı, hedef kaybı, yetki iptali ve kapanışta tuş bırakılır; geçici key-up hatası için kapanıştan bağımsız sınırlı tekrar denemesi vardır. Resmî [VirtualInput](https://create.roblox.com/docs/reference/engine/classes/VirtualInput) API'si desteklenmiyorsa ayarda durum gösterilir. Gerçek oyun input desteği test edilmedi. AI modu eklenmedi.
 - Right Shift menüyü açar; başlıktan sürüklenir; □ büyütür, × arayüz ve çizimleri kapatır. İstemciye yüklenmemiş karakterler hedeflenemez.
 
@@ -90,11 +90,13 @@ Ayar değişiklikleri, renk, kilit tuşu ve otomatik tuş tercihi saklanır; ge�
 
 ## Doğrulama
 
-Güncel okunabilir istemci ve paketlenmiş `KlewHubV1.lua` üzerinde **175'er test** geçti; taklit Roblox ortamında çalışan mantık testleridir. Kaynak/payload için Luau derlemesi ve yerel adlardan bağımsız AST eşitliği ayrıca kontrol edilir.
+Güncel okunabilir istemci ve paketlenmiş `KlewHubV1.lua` üzerinde **187'er test** geçti; taklit Roblox ortamında çalışan mantık testleridir. Kaynak/payload için Luau derlemesi ve yerel adlardan bağımsız AST eşitliği ayrıca kontrol edilir.
+
+Son istemci incelemesinin kaydı [KlewHubV1-final-audit-check.json](KlewHubV1-final-audit-check.json) dosyasındadır.
 
 15 hareket/kilit regresyonu mevcut render ve input yolunu kullanır. Eski sürüm fare merkezi sıçraması, WASD ile kamera/karakter hareketi ve hedefin kamera arkasına geçmesi testlerinde başarısızdı; düzeltilen kaynak ve payload hepsini geçer. [Kilit kontrol kaydı](KlewHubV1-client-motion-check.json). Bağlı Studio bulunmadığından canlı oyun testi yapılmadı; HTML/JPG menü önizlemesidir.
 
-13 Ekim'de eklenen **19 key giriş kontrolü**, gerçek istemci `FocusLost`/Enter ve düğme callback'lerini taklit HTTP yanıtlarıyla çalıştırır. Düzeltme öncesi toplam 175 kontrolde 166 geçti, 9 başarısızdı; düzeltme sonrası 175 geçti, sıfır hata. Başlangıç kontrolü sırasında bekleyen gönderim, key metninin sabitlenmesi, Unicode kenar temizliği, boş/uzun giriş, eski yanıtın iptali ve tekrar deneme kapsanır. [Key giriş kontrol kaydı](KlewHubV1-key-entry-check.json). Kullanıcının canlı HTTP 400 yanıtının gövdesi/hata kodu bulunmadığından bu bildirimin kesin nedeni belirlenmiş değildir; bu testler gerçek Roblox girişi veya canlı key aktivasyonu kanıtı değildir.
+13 Ekim'de eklenen **19 key giriş kontrolü**, gerçek istemci `FocusLost`/Enter ve düğme callback'lerini taklit HTTP yanıtlarıyla çalıştırır. Bu ilk düzeltmenin tarihsel sonucunda toplam 175 kontrolde önce 166 geçti, 9 başarısızdı; düzeltme sonrası 175 geçti, sıfır hata. Bu tarihsel toplam, güncel **187'er test** sonucundan ayrıdır. Başlangıç kontrolü sırasında bekleyen gönderim, key metninin sabitlenmesi, Unicode kenar temizliği, boş/uzun giriş, eski yanıtın iptali ve tekrar deneme kapsanır. [Key giriş kontrol kaydı](KlewHubV1-key-entry-check.json). Kullanıcının canlı HTTP 400 yanıtının gövdesi/hata kodu bulunmadığından bu bildirimin kesin nedeni belirlenmiş değildir; bu testler gerçek Roblox girişi veya canlı key aktivasyonu kanıtı değildir.
 
 HTTP backend için **157 test** geçti: Discord 50, Hub 44, LootLabs 31, bildirim 32. Yerel SQLite ve taklit HTTP/Discord yanıtları kullanılır; canlı Discord botu veya LootLabs görev testi değildir.
 
@@ -102,7 +104,7 @@ HTTP backend için **157 test** geçti: Discord 50, Hub 44, LootLabs 31, bildiri
 
 Ek **2 gerçek workerd kontrolü**, dış ağ kapalı HTTP taklidiyle Worker fetch çağrılarının receiver ve yönlendirme davranışını doğrular.
 
-Portalın gerçek TSX komponentinde **39 taklit ortam kontrolü** geçti; açılış, otomatik sekme, eski yapılandırmadan kurtarma ve takip/iptal akışlarını kapsar. Canlı tarayıcıda Key al düğmesinin tek tıklamayla LootLabs sekmesini açtığı ayrıca doğrulandı.
+Portalın gerçek TSX komponentinde **44 taklit ortam kontrolü** geçti; açılış, otomatik sekme, eski yapılandırmadan kurtarma ve takip/iptal akışlarını kapsar. Canlı tarayıcıda Key al düğmesinin tek tıklamayla LootLabs sekmesini açtığı ayrıca doğrulandı.
 
 Yeni sonuç sayfasında **26 taklit ortam kontrolü** çalıştırıldı. Görev sonrası yönlendirme ve cookie doğrulaması backend testlerine dahildir. Bu kontroller gerçek LootLabs reklam tamamlamasının yerine geçmez.
 
