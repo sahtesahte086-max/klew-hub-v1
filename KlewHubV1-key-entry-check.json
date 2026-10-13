@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "checked_at_utc": "2026-10-13T14:33:57.287290+00:00",
+  "source_sha256": "087efad797201d0623dda350480dcfaea8e8ee1295d674754f95ce18356f2cb4",
+  "payload_sha256": "18a4f7c36e619bc183a8e7d58279323f86918b34f84601b043df70e554224fe7",
+  "source_tests_passed": 175,
+  "payload_tests_passed": 175,
+  "failures": 0,
+  "new_key_entry_regressions": 19,
+  "previous_source_with_new_regressions": {
+    "passed": 166,
+    "failed": 9
+  },
+  "fixes": [
+    "Enter or verify button during Hello queues one captured key until Hello finishes or times out",
+    "ASCII whitespace and boundary Unicode copy marks are removed; internal key characters are preserved",
+    "empty and oversized keys are rejected locally before POST",
+    "duplicate input during Redeem does not issue another request",
+    "forgetting login clears queued input and prevents an old Redeem response reopening access",
+    "Redeem errors describe key input; timeout and adapter failures retain typed input for retry"
+  ],
+  "validation": {
+    "luau_compile": "passed",
+    "binding_normalized_ast": "equal",
+    "test_execution": "actual complete client source and packaged payload in mocked Roblox environment",
+    "studio_connections": 0,
+    "live_roblox_enter": "not tested",
+    "live_anonymous_hello": {
+      "checked_date_utc": "2026-10-13",
+      "transport": "native Node fetch",
+      "status": 200,
+      "ok": true,
+      "authorized": false
+    },
+    "live_valid_key_redeem_this_release": "not tested",
+    "previous_live_http_400_exact_cause": "unknown; log has no action or error body",
+    "python_diagnostic_403": "platform browser-signature block; not attributed to key-entry logic",
+    "backend_changed_this_release": false,
+    "html_preview": "layout preview only; not a Roblox screenshot"
+  }
+}

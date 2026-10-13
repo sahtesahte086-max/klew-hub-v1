@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "checked_at_utc": "2026-10-12 15:35:44 UTC",
-  "source_sha256": "dea7fc2bb0dc9124b38560a9278f331ee5c7757cea01697de6fe271a40e50664",
-  "payload_sha256": "08709b142c3df7e86433280cd584ee1e9d7fcc310a35b09bb04cef9f50a3af4b",
-  "source_tests_passed": 156,
-  "payload_tests_passed": 156,
+  "checked_at_utc": "2026-10-13T14:33:57.287290+00:00",
+  "source_sha256": "087efad797201d0623dda350480dcfaea8e8ee1295d674754f95ce18356f2cb4",
+  "payload_sha256": "18a4f7c36e619bc183a8e7d58279323f86918b34f84601b043df70e554224fe7",
+  "source_tests_passed": 175,
+  "payload_tests_passed": 175,
   "failures": 0,
   "new_motion_regressions": 15,
   "old_source_reproductions_failed": [
@@ -25,13 +25,16 @@
   "sticky_disabled": "closest eligible target selected each frame",
   "gui": {
     "desktop_size": [
-      430,
-      580
+      482,
+      360
     ],
-    "theme": "previous dark iOS-style layout with horizontal pill tabs and red switches",
+    "maximized_size": [
+      680,
+      500
+    ],
+    "theme": "reference dark gray translucent window; left sidebar; cyan switches",
     "logo_asset_id": "88391726271714",
-    "sticky_control": "advanced settings",
-    "rollback_reference_commit": "1b9d899fc7572dbe860ab7eae03234bf3f7a8668",
+    "sticky_control": "Main",
     "movement_fix_preserved": true
   },
   "validation": {

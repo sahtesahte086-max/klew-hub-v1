@@ -36,7 +36,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/sahtesahte086-max/kle
 
 Bu satır, yükleme yöntemini ve gereken HTTP POST adaptörünü sağlayan ortamda istemciyi indirir. Repo yolu aynı kaldı. GitHub Raw payload'ı yerel sürümün SHA-256 hash'iyle eşleşerek doğrulandı.
 
-Doğrulanan payload commit'i: `dfbcf1bead867073465221e96103fd8ed1da2bf7`. Sonraki belge commit'leri payload değiştiği anlamına gelmez.
+Doğrulanan payload commit'i: `c33db2bac643e05ebed3bf5430cd1f0461a9c133`. Sonraki belge commit'leri payload değiştiği anlamına gelmez.
 
 `KlewHubV1.lua` değişken adları kısaltılmış dağıtım dosyasıdır. **Public GitHub Raw bağlantısı kapalı kaynak sağlamaz.** İndiren kişi kodu alabilir; obfuscation yalnız okumayı zorlaştırır. `LICENSE.txt` kullanım koşullarını belirtir, teknik gizlilik sağlamaz. Secrets ve bot tokenı dağıtım dosyalarına konulmaz.
 
@@ -58,6 +58,8 @@ Bot, belirlenen sunucuda ve server tarafında doğrulanan Discord kullanıcı al
 
 Key süre dolmadan aktifleştirilir; erişim süresi ilk doğrulamadan başlar. Hedef verilmediyse ilk kullanan Roblox UserId'ye bağlanır. Bu dış servis sürümünde Roblox kimlikleri istemcinin beyanıdır; OAuth ile doğrulanmış değildir.
 
+Key alanında **Enter** ile **Doğrula ve devam et** aynı giriş akışını çalıştırır. Açılıştaki `Hello` kontrolü sürüyorsa gönderilen key bir kez bekletilir; kontrol yanıtından veya 15 saniyelik zaman aşımından sonra doğrulanır. Gönderim anındaki metin kullanılır. Yapıştırma sırasında key'in başına veya sonuna eklenen boşluk ve görünmez kopyalama işaretleri temizlenir; key'in içindeki karakterler değiştirilmez. Boş veya 1024 bayttan uzun giriş gönderilmez. Hata/zaman aşımında key alanda kalır ve tekrar denenebilir; **Kayıtlı girişi unut** bekleyen giriş ve eski yanıtın erişim açmasını da iptal eder.
+
 Yönetim kartı belirlenen özel kanaldadır; tam key oluşturma, liste ve ayrıntı yanıtlarını yalnız işlemi yapan admin görür. Tam key yalnız oluşturma yanıtında verilir; sonraki listede kimlik ve durum gösterilir. İptal onay ister, vazgeç key'i korur, tekrar iptal ilk iptal tarihini değiştirmez. Aynı interaction tekrar gelirse ikinci key üretilmez. Kesintide key yanıtı otomatik kurtarılamayabilir. Discord yönetimi oyuncu giriş kotasını tüketmez; admin ve işlem başına ayrı kotalar vardır: Hello 120, liste/detay 60, oluşturma/iptal 30 istek/dakika. Ayrıntılı kurulum geliştirici paketindeki `work/klew-key-service/DISCORD-KURULUM.md` dosyasındadır; `env.example` yalnız boş/örnek ayarlar içerir.
 
 Key oluşturma, ilk aktifleştirme ve ayrı panel açılışları kalıcı bir bildirim kuyruğuna kaydedilir. Bot, yapılandırılmış özel kanala saat, bağlantı IP'si ve scriptin bildirdiği Roblox kullanıcı adı/UserId ile mesaj gönderir. Key alınırken Roblox kimliği henüz bilinmeyebilir; aktifleştirmede bildirilir. Discord'dan oluşturulan key'in IP'si bilinmiyor olarak gösterilir. Tam key veya oturum tokenı bildirim mesajına yazılmaz; kısa key izi ve **Key iptal et** düğmesi vardır. Düğme Discord imzası, sunucu, kanal ve admin ID'si doğrulanarak çalışır. Kanalın özel olduğu her gönderimde kontrol edilir; sunucu Administrator yetkisine sahip kişiler Discord gereği yine görebilir.
@@ -72,13 +74,13 @@ Ayar değişiklikleri, renk, kilit tuşu ve otomatik tuş tercihi saklanır; ge�
 
 ## ESP ve kamera hedef takibi
 
-- Önceki 430×580 iOS tarzı koyu menü geri getirildi; yatay pill sekmeler, beyaz aktif sekme, kırmızı anahtarlar ve yuvarlak kartlar. Logo `88391726271714` ve açılış animasyonu korunur; panel kullanılabilir canvas boyutuna göre küçülür.
+- 13 Ekim referansına göre 482×360 gri/cyan menü, solda gezinme, sade kartlar ve açılır gelişmiş ayar grupları kullanılır. Büyütme düğmesi paneli 680×500 yapar; panel kullanılabilir canvas boyutuna göre küçülür. Logo `88391726271714` ve açılış animasyonu korunur.
 - ESP'de takım arkadaşlarını gizleme varsayılan açık; kutu/isim/sağlık/mesafe isteğe bağlı. Yenileme 30–240 Hz, varsayılan 60 Hz; gerçek hız FPS'yi aşmaz.
 - Kamera takibi kendi takımına kilitlenmez. Ayarlanabilir kilit tuşu, basılı tutma/aç-kapat modu, KİLİT düğmesi ve gamepad L2.
 - Aim açıkken FOV halkası görünür. Kesin/yumuşak takip seçilebilir; aim ve ESP mesafeleri ayrıdır.
-- **Hedefi koru** gelişmiş ayarlardadır ve varsayılan açıktır; kayıtlı tercih korunur. FOV/ekran sınırı ilk hedef seçiminde kullanılır; mevcut geçerli kilit WASD veya fare hareketinde korunur. Ölüm, takım, seçilen parçanın kaybolması, mesafe, görüş hattı ve odak kaybı kontrolleri sürer. **Basılı tut** modunda kilit tuşu basılı kalmalıdır; bırakıldığında kilit çözülür. **Aç / kapat** modunda bir kez basılır, yeniden basılarak bırakılır.
+- **Hedefi koru** Main sayfasında görünür ve varsayılan açıktır; kayıtlı tercih korunur. FOV/ekran sınırı ilk hedef seçiminde kullanılır; mevcut geçerli kilit WASD veya fare hareketinde korunur. Ölüm, takım, seçilen parçanın kaybolması, mesafe, görüş hattı ve odak kaybı kontrolleri sürer. **Basılı tut** modunda kilit tuşu basılı kalmalıdır; bırakıldığında kilit çözülür. **Aç / kapat** modunda bir kez basılır, yeniden basılarak bırakılır.
 - İsteğe bağlı otomatik basılı tuş: Sol Shift, Sol Ctrl veya Boşluk; hedef kilitliyken ya da kilitli + sol tık sırasında. Varsayılan kapalıdır. Menü/chat/oyun odağı kaybı, hedef kaybı, yetki iptali ve kapanışta tuş bırakılır; geçici key-up hatası için kapanıştan bağımsız sınırlı tekrar denemesi vardır. Resmî [VirtualInput](https://create.roblox.com/docs/reference/engine/classes/VirtualInput) API'si desteklenmiyorsa ayarda durum gösterilir. Gerçek oyun input desteği test edilmedi. AI modu eklenmedi.
-- Right Shift menüyü açar; başlıktan sürüklenir; × arayüz ve çizimleri kapatır. İstemciye yüklenmemiş karakterler hedeflenemez.
+- Right Shift menüyü açar; başlıktan sürüklenir; □ büyütür, × arayüz ve çizimleri kapatır. İstemciye yüklenmemiş karakterler hedeflenemez.
 
 ## Eski Studio dosyaları
 
@@ -88,13 +90,15 @@ Ayar değişiklikleri, renk, kilit tuşu ve otomatik tuş tercihi saklanır; ge�
 
 ## Doğrulama
 
-Güncel okunabilir istemci ve paketlenmiş `KlewHubV1.lua` üzerinde **156'er test** geçti; taklit Roblox ortamında çalışan mantık testleridir. Kaynak/payload için Luau derlemesi ve yerel adlardan bağımsız AST eşitliği ayrıca kontrol edilir.
+Güncel okunabilir istemci ve paketlenmiş `KlewHubV1.lua` üzerinde **175'er test** geçti; taklit Roblox ortamında çalışan mantık testleridir. Kaynak/payload için Luau derlemesi ve yerel adlardan bağımsız AST eşitliği ayrıca kontrol edilir.
 
 15 hareket/kilit regresyonu mevcut render ve input yolunu kullanır. Eski sürüm fare merkezi sıçraması, WASD ile kamera/karakter hareketi ve hedefin kamera arkasına geçmesi testlerinde başarısızdı; düzeltilen kaynak ve payload hepsini geçer. [Kilit kontrol kaydı](KlewHubV1-client-motion-check.json). Bağlı Studio bulunmadığından canlı oyun testi yapılmadı; HTML/JPG menü önizlemesidir.
 
+13 Ekim'de eklenen **19 key giriş kontrolü**, gerçek istemci `FocusLost`/Enter ve düğme callback'lerini taklit HTTP yanıtlarıyla çalıştırır. Düzeltme öncesi toplam 175 kontrolde 166 geçti, 9 başarısızdı; düzeltme sonrası 175 geçti, sıfır hata. Başlangıç kontrolü sırasında bekleyen gönderim, key metninin sabitlenmesi, Unicode kenar temizliği, boş/uzun giriş, eski yanıtın iptali ve tekrar deneme kapsanır. [Key giriş kontrol kaydı](KlewHubV1-key-entry-check.json). Kullanıcının canlı HTTP 400 yanıtının gövdesi/hata kodu bulunmadığından bu bildirimin kesin nedeni belirlenmiş değildir; bu testler gerçek Roblox girişi veya canlı key aktivasyonu kanıtı değildir.
+
 HTTP backend için **157 test** geçti: Discord 50, Hub 44, LootLabs 31, bildirim 32. Yerel SQLite ve taklit HTTP/Discord yanıtları kullanılır; canlı Discord botu veya LootLabs görev testi değildir.
 
-12 Ekim canlı Discord kontrolünde sabit panelden 2 test key'i üretildi; liste, detay, vazgeç ve onaylı iptal denendi. İptal edilen key iki açık tokenla reddedildi. Test keyleri temizlendi. Sürüm, kanal ve canlı sonuç kaydı [KlewHubV1-discord-admin-live-check.json](KlewHubV1-discord-admin-live-check.json) içindedir. [Özel yönetim panelini aç](https://discord.com/channels/1492835611692765244/1558728156758933524/1558898250277199893).
+12 Ekim v12 canlı Discord kontrolünde sabit panelden 2 test key'i üretildi; liste, detay, vazgeç ve onaylı iptal denendi. İptal edilen key iki açık tokenla reddedildi. Test keyleri temizlendi. Bu tarihli kanıt, 13 Ekim menü/key giriş değişikliğinde Discord akışının yeniden canlı test edildiği anlamına gelmez. Sürüm, kanal ve canlı sonuç kaydı [KlewHubV1-discord-admin-live-check.json](KlewHubV1-discord-admin-live-check.json) içindedir. [Özel yönetim panelini aç](https://discord.com/channels/1492835611692765244/1558728156758933524/1558898250277199893).
 
 Ek **2 gerçek workerd kontrolü**, dış ağ kapalı HTTP taklidiyle Worker fetch çağrılarının receiver ve yönlendirme davranışını doğrular.
 

@@ -1,6 +1,18 @@
-# Klew Hub v1 — 12 Ekim 2026 hata incelemesi
+# Klew Hub v1 — 13 Ekim 2026 hata incelemesi
 
-Bu sürüm key portalı, Discord yönetimi ve Roblox HTTP istemcisindeki bağlantı hatalarını düzeltir. Yeni key sonucu `/key` sayfasında gösterilir. Hatırlanan oturum ve ayarlar, özel Discord bildirim kuyruğu, key iptal düğmesi ve modern menü eklendi.
+13 Ekim değişikliği, referansa uygun gri/cyan menüyü ve key girişindeki testle doğrulanan yarış/temizleme sorunlarının düzeltmesini içerir. Hareket sırasında hedefi koruma, oturum/ayar kaydı ve mevcut HTTP key servisi korunur. Aşağıdaki portal ve Discord bölümleri önceki sürümlerin tarihli sonuçlarıdır; yeni istemci değişikliği bunların yeniden canlı test edildiği anlamına gelmez.
+
+## Enter ile key girişi
+
+Enter ve Doğrula ve devam et düğmesi aynı `redeemKey` giriş yolunu kullanıyordu. Başlangıç `Hello` kontrolü sürerken `authBusy` erken dönüşü gönderimi sessizce düşürüyordu. Gerçek kaynakla yapılan gecikmeli HTTP testinde Enter veya düğmeden sonra hiçbir Redeem gönderilmediği doğrulandı. Gönderilen key artık bir kez bekletilir; Hello yanıtı veya 15 saniyelik zaman aşımından sonra gönderilir. Gönderim anındaki metin sabitlenir; alana sonradan yazılan metin bu isteği değiştirmez. Devam eden Redeem sırasında Enter/düğme tekrarları ikinci istek üretmez.
+
+ASCII boşluk temizliği, yapıştırılan BOM, NBSP ve zero-width kenar işaretlerini temizlemiyordu. Özellikle başında bu işaretler bulunan admin key'i Bearer başlığına taşınmıyordu. Yalnız key'in başındaki/sonundaki boşluk ve kopyalama işaretleri temizlenir; içerideki karakterler değiştirilmez. Boş veya 1024 bayttan uzun giriş HTTP isteği üretmez. Hatalı key, bağlantı hatası ve zaman aşımında giriş alanı korunur; kullanıcı tekrar deneyebilir. Redeem `invalid_payload` mesajı artık key girişini anlatır, admin süre alanını anlatmaz.
+
+Bekleyen Redeem yanıtı, Kayıtlı girişi unut sonrasında yeniden erişim açabiliyordu. Giriş yanıtı oturum revizyonuyla karşılaştırılır; unutulan girişin bekleyen key'i silinir ve eski yanıt erişim açamaz. Önceden mevcut olan timeout/yeniden deneme koruması da sürer: geç kalan bir yanıt, daha yeni başarılı oturumu değiştiremez.
+
+**19 yeni kontrol** gerçek istemci FocusLost/Enter, düğme ve render akışını taklit HTTP sınırlarıyla çalıştırır. Düzeltme öncesi 175 kontrolün 166'sı geçti, 9'u başarısızdı. Düzeltme sonrası kaynakta **175 geçti, 0 hata**. Dağıtım kopyasının sonucu ve kaynak/payload hash'leri `KlewHubV1-key-entry-check.json` ile sürüm manifestinde kaydedilir; yayın durumu ayrı doğrulanır.
+
+Bu sorunlar testle yeniden üretildi; kullanıcının bildirdiği canlı HTTP 400 yanıtının kesin nedeni bulunmuş değildir. Servis kaydında istek gövdesi, işlem ve JSON hata kodu görülmedi. Canlı anonim Hello kontrolünün 200 döndürmesi erişilebilirliği doğrular; gerçek kullanıcının key'inin başarılı doğrulandığını kanıtlamaz. Gerçek Roblox çok oyunculu oturumu bu düzeltme için test edilmedi.
 
 ## Menü açılıp kapanıyordu
 
@@ -30,7 +42,7 @@ Canlı kontrolde sonuç sayfasındaki istemci yönlendirmesi portal dönüşünd
 
 ## Doğrulamanın sınırları
 
-İstemcinin güncel okunabilir ve dağıtım kopyalarında 156'şar taklit Roblox kontrolü geçti. Luau derlemesi ve AST eşitliği doğrulandı. Canlı API eski boş-dizi isteğine 200 döndürüyor; GitHub Raw doğrulaması sürüm manifestinde belirtilir.
+12 Ekim hareket/kilit sürümünün okunabilir ve dağıtım kopyalarında 156'şar taklit Roblox kontrolü geçmişti; Luau derlemesi ve AST eşitliği doğrulanmıştı. 13 Ekim key giriş kontrolüyle güncel toplam 175'tir. Güncel kaynak/payload sonucu, derleme, AST eşitliği ve GitHub Raw hash doğrulaması bu sürümün kontrol kaydı ve manifestinde ayrı belirtilir. Canlı API'nin eski boş-dizi isteğine 200 dönmesi, gerçek kullanıcının key girişini doğrulamaz.
 
 Backend ve web arayüzü testleri gerçek kaynak kodunu, SQLite ve taklit HTTP cevaplarını kullanır. Ayrıca aşağıda belirtilen canlı API ve Discord panel kontrolleri yapılmıştır. Gerçek Roblox çok oyunculu oturumu veya LootLabs reklam/insan doğrulaması tamamlanarak key teslimi bu raporla test edilmiş sayılmaz.
 
@@ -42,15 +54,15 @@ Geçerli normal oturum tokenı ve beyaz listedeki ayarlar hesap/servis kapsamın
 
 Main gelişmiş ayarlarında isteğe bağlı Sol Shift/Sol Ctrl/Boşluk, kilitliyken veya kilitli + ateş ederken modu bulunur. Menü, sohbet, odak kaybı, hedef kaybı, izin iptali ve kapanışta tuş bırakılır. Kapanış sırasında başarısız key-up tekrarının render döngüsü durduktan sonra kaybolması düzeltildi; sınırlı bağımsız tekrar ve eski denemelerin yeni tuş basışını bırakmasını engelleyen nesil kontrolü eklendi. Resmî Roblox VirtualInput API'si desteklenmiyorsa durum gösterilir. Gerçek oyun input desteği test edilmedi. AI modu eklenmedi.
 
-Kullanıcının isteğiyle son kontrol merkezi tasarımı geri alındı. Önceki 430×580 koyu menü, yatay pill sekmeler, beyaz aktif sekme ve kırmızı anahtarlar geri getirildi. Logo 88391726271714, oturum/ayar kaydı ve hareket sırasında hedefi koruma düzeltmesi korunur. Panel gerçek kullanılabilir canvas boyutuna göre küçülür. HTML/JPG önizlemeleri gerçek Roblox ekran görüntüsü değildir.
+13 Ekim referansına göre 482×360 gri/cyan panel ve solda gezinme menüsü kullanılır. Büyütme düğmesi paneli 680×500 yapar; gelişmiş ayarlar açılır gruplarda sadeleştirilmiştir. Hedefi koru Main sayfasında doğrudan görünür. Logo 88391726271714, oturum/ayar kaydı ve hareket sırasında hedefi koruma düzeltmesi korunur. Panel gerçek kullanılabilir canvas boyutuna göre küçülür. HTML/JPG önizlemeleri gerçek Roblox ekran görüntüsü değildir.
 
 ## WASD ve fare hareketinde hedef kilidi düşüyordu
 
 `chooseTarget` içindeki Sticky dalı ilk edinme için kullanılan `targetPoint` kontrollerini tekrar uyguluyordu. Fare merkezinin kayması veya normal kameranın karakter hareketi sırasında bakışı/konumu değiştirmesi, seçili hedefi FOV/ekran sınırı dışına taşıyınca kilit kayboluyordu. WASD ve MouseMovement olayları doğrudan kilidi bırakmıyordu.
 
-Mevcut Sticky hedefin korunması ilk hedef ediniminden ayrıldı. Yeni hedefler hâlâ FOV içinde, ekranda ve kamera önünde seçilir. Mevcut hedef karakter, takım, seçilen parça, mesafe ve görüş hattı kontrollerini geçtiğinde kamera/fare hareketinde korunur. Ölüm, takım değişikliği, duvar, mesafe sınırı veya odak kaybında bırakılır. Basılı tut modunda kilit tuşunu bırakmak, aç/kapat modunda yeniden basmak kilidi çözer. Sticky kapalıysa en yakın uygun hedef her kare yeniden seçilir. `Hedefi koru` önceki gelişmiş ayarlar bölümündedir; kayıtlı tercih değiştirilmez.
+Mevcut Sticky hedefin korunması ilk hedef ediniminden ayrıldı. Yeni hedefler hâlâ FOV içinde, ekranda ve kamera önünde seçilir. Mevcut hedef karakter, takım, seçilen parça, mesafe ve görüş hattı kontrollerini geçtiğinde kamera/fare hareketinde korunur. Ölüm, takım değişikliği, duvar, mesafe sınırı veya odak kaybında bırakılır. Basılı tut modunda kilit tuşunu bırakmak, aç/kapat modunda yeniden basmak kilidi çözer. Sticky kapalıysa en yakın uygun hedef her kare yeniden seçilir. `Hedefi koru` Main sayfasındadır; varsayılan açık olmakla birlikte kayıtlı kapalı tercih de korunur.
 
-15 yeni regresyon gerçek kaynak ve render/input yolunda çalıştırıldı. Eski kaynakta fare FOV sıçraması, WASD ile kamera/karakter konum değişikliği ve kamera arkasına geçen hedef testleri başarısızdı. Düzeltilen kaynak ve obfuscation uygulanmış payload'da 156'şar test, sıfır hata ile geçti. AST eşitliği ve Luau derlemesi başarılı. Bağlı Roblox Studio bulunmadığından gerçek oyun testi yapılamadı. Sonuçlar `KlewHubV1-client-motion-check.json` dosyasında tutulur.
+12 Ekim'deki 15 hareket regresyonu gerçek kaynak ve render/input yolunda çalıştırıldı. Eski kaynakta fare FOV sıçraması, WASD ile kamera/karakter konum değişikliği ve kamera arkasına geçen hedef testleri başarısızdı. O sürümün düzeltilen kaynak ve obfuscation uygulanmış payload'ında 156'şar test, sıfır hata ile geçti; AST eşitliği ve Luau derlemesi başarılıydı. Bu hareket kontrolleri 13 Ekim'in 175 testlik kapsamına da dahildir. Bağlı Roblox Studio bulunmadığından gerçek oyun testi yapılamadı. Tarihli hareket sonuçları `KlewHubV1-client-motion-check.json`, yeni key giriş sonuçları `KlewHubV1-key-entry-check.json` dosyasında tutulur.
 
 ## Bildirimler kuyrukta kalıyordu
 
@@ -88,6 +100,6 @@ Canlı API'de bu çalışmaya ait iki test key'iyle 10 kontrol geçti. İptalden
 
 Son v12 canlı UI iptal akışı da doğrulandı: bu çalışmaya ait test key'i için özel yanıt `1559211109045633154`, “Key iptal edildi. Bu key’e bağlı erişim artık geçersiz.” metnini gösterdi. Yanıttaki iptal zamanı 12 Ekim 2026 17:32 Türkiye saatiydi. Sonraki API kontrolü Discord UI'dan oluşturulan iki key'in de 1 saatlik ve hedef UserId `4484679888` olduğunu, UI iptalinin kalıcı kayda geçtiğini ve ilk iptal zamanının korunduğunu doğruladı. Bu iki test key'i de iptal edilerek temizlik tamamlandı; başka kullanıcıların key'lerine dokunulmadı. Canlı panelden oluşturma, listeleme, detay ve iptal akışları ile iptalin API'deki kalıcılığı doğrulandı.
 
-Güncel doğrulamada **157 backend testi** geçti: Discord 50, Hub 44, LootLabs 31, bildirim 32. Ek **2 gerçek workerd fetch/receiver testi** ayrı olarak geçti. ESLint, TypeScript ve üretim build'i başarılı oldu.
+12 Ekim v12 doğrulamasında **157 backend testi** geçti: Discord 50, Hub 44, LootLabs 31, bildirim 32. Ek **2 gerçek workerd fetch/receiver testi** ayrı olarak geçti. ESLint, TypeScript ve üretim build'i başarılı oldu. 13 Ekim menü/key giriş düzeltmesi backend değişikliği veya yeni canlı Discord yayını gerektirmez; bu backend ve canlı panel sonuçları tarihli geçmiş kanıt olarak korunur.
 
 Tarayıcı ekran görüntüsü alma denemesi CDP'nin 5000 ms zaman aşımıyla başarısız oldu; bu turdan gerçek ekran görüntüsü mevcut değildir. Canlı kontroller gerçek Roblox çok oyunculu oturumu, oyun input desteği veya LootLabs reklam görevinin tamamlanması olarak sunulmaz.
