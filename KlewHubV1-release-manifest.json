@@ -1,9 +1,9 @@
 {
   "schema_version": 4,
   "release_model": "external_http_key_service_with_discord_admin",
-  "generated_at_utc": "2026-10-15T17:20:48.923429+00:00",
+  "generated_at_utc": "2026-10-15T19:33:39.146194+00:00",
   "loader_url": "https://raw.githubusercontent.com/sahtesahte086-max/klew-hub-v1/main/KlewHubV1.lua",
-  "github_verified_payload_commit": "158d4a7ab36cd6a1308e3a9a5f9b206b23e9b4ce",
+  "github_verified_payload_commit": "c530ca99aa5e4dafca5869c4038aa1b687a39637",
   "client_config_key_service_url": "https://klew-hub-key-service.neataphid16.chatgpt.site",
   "publication_status": {
     "public_portal": "public",
@@ -43,28 +43,71 @@
     "pages": [
       "Main",
       "Aimbot",
+      "AI",
       "Settings"
     ],
     "sticky_control_page": "Aimbot",
     "saved_sticky_preference_preserved": true,
     "advanced_groups_collapsible": true
   },
+  "ai_mode": {
+    "implementation": "local_rule_based_tool_assist",
+    "language_model_used": false,
+    "universal_game_understanding_guaranteed": false,
+    "experience_identity_display": [
+      "game.Name",
+      "game.PlaceId"
+    ],
+    "profile_modes": [
+      "Auto",
+      "Ranged",
+      "Melee"
+    ],
+    "auto_profile_inputs": [
+      "equipped_Tool.WeaponType_attribute",
+      "equipped_Tool.Name"
+    ],
+    "unknown_auto_profile_fires": false,
+    "attack_input": "standard_Tool_Activate_then_Deactivate",
+    "custom_combat_protocols_automatically_discovered": false,
+    "teammates_excluded": true,
+    "target_requires_loaded_visible_head_in_fov_and_range": true,
+    "movement": {
+      "default_enabled": false,
+      "implementation": "straight_line_Humanoid_Move_with_line_of_sight_check",
+      "pathfinding_or_obstacle_navigation": false
+    },
+    "menu_open_behavior": "pause_until_menu_closes",
+    "disable_conditions": [
+      "manual_input",
+      "window_focus_loss",
+      "chat_focus",
+      "roblox_menu",
+      "death_or_character_removal",
+      "access_loss",
+      "unload"
+    ],
+    "runtime_enabled_state_persisted": false,
+    "off_on_every_execution": true,
+    "preferences_persisted": true,
+    "live_roblox_verification": "not_tested"
+  },
   "artifacts": {
     "KlewHubV1.client.luau": {
-      "bytes": 89929,
-      "sha256": "af7f6ba3ee0292029e7690edfbed6d926a9d379a14310f912c20bf43bf000e80",
+      "bytes": 105190,
+      "sha256": "c07a955dde8c4c1f75693ae5f074394bcdc7bd415720a9ed8f38f17994fcc7a4",
       "role": "current_readable_http_client",
       "ast_matches_current_source": true
     },
     "KlewHubV1.lua": {
-      "bytes": 92194,
-      "sha256": "31094450c60533d35c2a8b1c56777a040c0cc71180e6f435b6470763af11bfd6",
+      "bytes": 107847,
+      "sha256": "51120121b00b84a6bc6eab94be27be3aa598258c74872cabb85efd7c8ac9440f",
       "role": "current_obfuscated_http_client",
       "ast_matches_current_source": true
     },
     "KlewHubV1.Studio-private.luau": {
-      "bytes": 92194,
-      "sha256": "31094450c60533d35c2a8b1c56777a040c0cc71180e6f435b6470763af11bfd6",
+      "bytes": 107847,
+      "sha256": "51120121b00b84a6bc6eab94be27be3aa598258c74872cabb85efd7c8ac9440f",
       "role": "current_payload_compatibility_filename_requires_http_adapter",
       "ast_matches_current_source": true
     },
@@ -74,8 +117,8 @@
       "role": "raw_download_loader_requires_supported_environment"
     },
     "github-distribution/KlewHubV1.lua": {
-      "bytes": 92194,
-      "sha256": "31094450c60533d35c2a8b1c56777a040c0cc71180e6f435b6470763af11bfd6",
+      "bytes": 107847,
+      "sha256": "51120121b00b84a6bc6eab94be27be3aa598258c74872cabb85efd7c8ac9440f",
       "role": "github_payload_staging_copy",
       "ast_matches_current_source": true,
       "identical_to_current_local_payload": true
@@ -91,23 +134,23 @@
       "role": "github_live_admin_receipt_copy"
     },
     "KlewHubV1-client-motion-check.json": {
-      "bytes": 1815,
-      "sha256": "511126434ec309508e1e9573d7f40f9750901c89451d46b42beae9ce6c063daa",
+      "bytes": 1828,
+      "sha256": "e73f6d3e13e4ee5f668bb3da35269a1cc7f0f2a0d4761f3200f908cc4909df7a",
       "role": "client_motion_lock_verification_receipt"
     },
     "github-distribution/KlewHubV1-client-motion-check.json": {
-      "bytes": 1815,
-      "sha256": "511126434ec309508e1e9573d7f40f9750901c89451d46b42beae9ce6c063daa",
+      "bytes": 1828,
+      "sha256": "e73f6d3e13e4ee5f668bb3da35269a1cc7f0f2a0d4761f3200f908cc4909df7a",
       "role": "github_client_motion_receipt_copy"
     },
     "KlewHubV1-key-entry-check.json": {
       "bytes": 2219,
-      "sha256": "caf903d688c7575b30084811b97aa41d9c71e41a4cd91a97b9a0613ed9df46ed",
+      "sha256": "a396b488b76bb1c7800253a128a127a810037afd10173a4efd6738ff972d9a0c",
       "role": "client_key_entry_verification_receipt"
     },
     "github-distribution/KlewHubV1-key-entry-check.json": {
       "bytes": 2219,
-      "sha256": "caf903d688c7575b30084811b97aa41d9c71e41a4cd91a97b9a0613ed9df46ed",
+      "sha256": "a396b488b76bb1c7800253a128a127a810037afd10173a4efd6738ff972d9a0c",
       "role": "github_client_key_entry_receipt_copy",
       "identical_to_current_local_receipt": true
     },
@@ -146,6 +189,17 @@
       "bytes": 1239,
       "sha256": "33c79e65ce36806a41c5868a71b6f3161d170972329b1c73799f629655dae0c2",
       "role": "github_client_esp_preference_restore_receipt_copy",
+      "identical_to_current_local_receipt": true
+    },
+    "KlewHubV1-ai-check.json": {
+      "bytes": 3317,
+      "sha256": "691327d1fbcb909a86dba6e4f7e7dca0a5e2bec3287eb5663ac7d1b01ba07f07",
+      "role": "client_rule_based_ai_verification_receipt"
+    },
+    "github-distribution/KlewHubV1-ai-check.json": {
+      "bytes": 3317,
+      "sha256": "691327d1fbcb909a86dba6e4f7e7dca0a5e2bec3287eb5663ac7d1b01ba07f07",
+      "role": "github_client_rule_based_ai_receipt_copy",
       "identical_to_current_local_receipt": true
     },
     "KlewHubV1.server.luau": {
@@ -192,7 +246,7 @@
     }
   },
   "validation": {
-    "client_source_and_packaged_payload_tests_each": 190,
+    "client_source_and_packaged_payload_tests_each": 213,
     "client_test_artifacts": [
       "KlewHubV1.client.luau",
       "KlewHubV1.lua"
@@ -205,8 +259,9 @@
     },
     "live_key_reset_receipt": "KlewHubV1-reset-live-check.json",
     "client_esp_preference_restore_receipt": "KlewHubV1-esp-restore-check.json",
+    "client_rule_based_ai_receipt": "KlewHubV1-ai-check.json",
     "client_key_entry_regressions": {
-      "current_full_suite_tests_each": 190,
+      "current_full_suite_tests_each": 213,
       "initial_key_entry_fix_history": {
         "checked_date_utc": "2026-10-13",
         "new_checks": 19,

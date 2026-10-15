@@ -36,7 +36,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/sahtesahte086-max/kle
 
 Bu satır, yükleme yöntemini ve gereken HTTP POST adaptörünü sağlayan ortamda istemciyi indirir. Repo yolu aynı kaldı. GitHub Raw payload'ı yerel sürümün SHA-256 hash'iyle eşleşerek doğrulandı.
 
-Doğrulanan payload commit'i: `158d4a7ab36cd6a1308e3a9a5f9b206b23e9b4ce`. Sonraki belge commit'leri payload değiştiği anlamına gelmez.
+Doğrulanan payload commit'i: `c530ca99aa5e4dafca5869c4038aa1b687a39637`. Sonraki belge commit'leri payload değiştiği anlamına gelmez.
 
 `KlewHubV1.lua` değişken adları kısaltılmış dağıtım dosyasıdır. **Public GitHub Raw bağlantısı kapalı kaynak sağlamaz.** İndiren kişi kodu alabilir; obfuscation yalnız okumayı zorlaştırır. `LICENSE.txt` kullanım koşullarını belirtir, teknik gizlilik sağlamaz. Secrets ve bot tokenı dağıtım dosyalarına konulmaz.
 
@@ -65,7 +65,7 @@ Yönetim kartı belirlenen özel kanaldadır; tam key oluşturma, liste ve ayrı
 
 `/klew-reset` veya paneldeki kırmızı sıfırlama düğmesi, önceden doldurulmamış bir onay formu açar. İşlemi yapmak için tam **TUM KEYLERI SIFIRLA** yazılmalıdır. Form; yetkili Discord hesabına, kanala ve sıfırlama amacına bağlı imzayla korunur, 15 dakika geçerlidir. İşlem bütün keyleri, normal kullanıcı oturumlarını, erişim izinlerini, kullanım kayıtlarını, LootLabs takiplerini, bildirim kayıtlarını ve işlem sayaçlarını temizler; yönetici oturumları ve interaction tekrar işlem koruması korunur. Silinen kayıt sayıları yalnız işlemi yapan adminin yanıtında gösterilir. Bu işlem geri alınamaz.
 
-Canlı key/sayaç sıfırlaması ve Discord kanal düzenlemesinin tarihli sonucu [KlewHubV1-reset-live-check.json](KlewHubV1-reset-live-check.json) dosyasındadır. Bu kayıt, o işlemin sonrasındaki durumu gösterir; daha sonra oluşturulan keyler ayrıca yönetilir.
+15 Ekim 2026'daki canlı key/sayaç sıfırlaması ve Discord kanal düzenlemesinin sonucu [KlewHubV1-reset-live-check.json](KlewHubV1-reset-live-check.json) dosyasındadır. Bu kayıt, o işlemin sonrasındaki durumu gösterir; daha sonra oluşturulan keyler ayrıca yönetilir.
 
 Key oluşturma, ilk aktifleştirme ve ayrı panel açılışları kalıcı bir bildirim kuyruğuna kaydedilir. Bot, yapılandırılmış özel kanala saat, bağlantı IP'si ve scriptin bildirdiği Roblox kullanıcı adı/UserId ile mesaj gönderir. Key alınırken Roblox kimliği henüz bilinmeyebilir; aktifleştirmede bildirilir. Discord'dan oluşturulan key'in IP'si bilinmiyor olarak gösterilir. Tam key veya oturum tokenı bildirim mesajına yazılmaz; kısa key izi ve **Key iptal et** düğmesi vardır. Düğme Discord imzası, sunucu, kanal ve admin ID'si doğrulanarak çalışır. Kanalın özel olduğu her gönderimde kontrol edilir; sunucu Administrator yetkisine sahip kişiler Discord gereği yine görebilir.
 
@@ -79,17 +79,30 @@ Ayar değişiklikleri, renk, kilit tuşu ve otomatik tuş tercihi saklanır; ge�
 
 Key iptali veya oturum süresinin dolması erişimi kapatır; kayıtlı ESP tercihlerini tek başına sıfırlamaz. Yeni key ile yeniden doğrulandıktan sonra aynı kayıtlı ESP ayarları geri yüklenir. **Varsayılanlara dön** tercihleri bilerek sıfırlamak için kullanılır.
 
-Yeni key ile yeniden doğrulama sonrasında kayıtlı ESP tercihlerinin geri yüklenmesine ilişkin kontrol sonuçları [KlewHubV1-esp-restore-check.json](KlewHubV1-esp-restore-check.json) dosyasındadır. Taklit Roblox ortamındaki bu kontroller canlı oyun testi yerine geçmez.
+15 Ekim 2026'da yeni key ile yeniden doğrulama sonrasında kayıtlı ESP tercihlerinin geri yüklenmesine ilişkin kontrol sonuçları [KlewHubV1-esp-restore-check.json](KlewHubV1-esp-restore-check.json) dosyasındadır. Taklit Roblox ortamındaki bu kontroller canlı oyun testi yerine geçmez.
 
 ## ESP ve kamera hedef takibi
 
-- 13 Ekim referansına göre 482×360 gri/cyan menü, solda gezinme, sade kartlar ve açılır gelişmiş ayar grupları kullanılır. Varsayılan **Main** sayfasında **ESP** ve **Settings** bölümleri bulunur; kamera takibi ayrı **Aimbot** sekmesindedir. Büyütme düğmesi paneli 680×500 yapar; panel kullanılabilir canvas boyutuna göre küçülür. Logo `88391726271714` ve açılış animasyonu korunur.
+- 13 Ekim referansına göre 482×360 gri/cyan menü, solda gezinme, sade kartlar ve açılır gelişmiş ayar grupları kullanılır. Varsayılan **Main** sayfasında **ESP** ve **Settings** bölümleri bulunur; kamera takibi **Aimbot**, kurallı otomatik takip/Tool girdisi **AI** sekmesindedir. Büyütme düğmesi paneli 680×500 yapar; panel kullanılabilir canvas boyutuna göre küçülür. Logo `88391726271714` ve açılış animasyonu korunur.
 - ESP'de takım arkadaşlarını gizleme varsayılan açık; kutu/isim/sağlık/mesafe isteğe bağlı. Yenileme 30–240 Hz, varsayılan 60 Hz; gerçek hız FPS'yi aşmaz.
 - Kamera takibi kendi takımına kilitlenmez. Ayarlanabilir kilit tuşu, basılı tutma/aç-kapat modu, KİLİT düğmesi ve gamepad L2.
 - Aim açıkken FOV halkası görünür. Kesin/yumuşak takip seçilebilir; aim ve ESP mesafeleri ayrıdır.
 - **Hedefi koru** Aimbot sayfasında görünür ve varsayılan açıktır; kayıtlı tercih korunur. FOV/ekran sınırı ilk hedef seçiminde kullanılır; mevcut geçerli kilit WASD veya fare hareketinde korunur. Ölüm, takım, seçilen parçanın kaybolması, mesafe, görüş hattı ve odak kaybı kontrolleri sürer. **Basılı tut** modunda kilit tuşu basılı kalmalıdır; bırakıldığında kilit çözülür. **Aç / kapat** modunda bir kez basılır, yeniden basılarak bırakılır.
-- İsteğe bağlı otomatik basılı tuş: Sol Shift, Sol Ctrl veya Boşluk; hedef kilitliyken ya da kilitli + sol tık sırasında. Varsayılan kapalıdır. Menü/chat/oyun odağı kaybı, hedef kaybı, yetki iptali ve kapanışta tuş bırakılır; geçici key-up hatası için kapanıştan bağımsız sınırlı tekrar denemesi vardır. Resmî [VirtualInput](https://create.roblox.com/docs/reference/engine/classes/VirtualInput) API'si desteklenmiyorsa ayarda durum gösterilir. Gerçek oyun input desteği test edilmedi. AI modu eklenmedi.
+- İsteğe bağlı otomatik basılı tuş: Sol Shift, Sol Ctrl veya Boşluk; hedef kilitliyken ya da kilitli + sol tık sırasında. Varsayılan kapalıdır. Menü/chat/oyun odağı kaybı, hedef kaybı, yetki iptali ve kapanışta tuş bırakılır; geçici key-up hatası için kapanıştan bağımsız sınırlı tekrar denemesi vardır. Resmî [VirtualInput](https://create.roblox.com/docs/reference/engine/classes/VirtualInput) API'si desteklenmiyorsa ayarda durum gösterilir. Gerçek oyun input desteği test edilmedi.
 - Right Shift menüyü açar; başlıktan sürüklenir; □ büyütür, × arayüz ve çizimleri kapatır. İstemciye yüklenmemiş karakterler hedeflenemez.
+
+## AI modu
+
+**AI** sekmesindeki mod, eldeki araca göre profil seçen yerel bir kural sistemidir. Durum alanında deneyimin adı/PlaceId'si ve araç profili gösterilir. LLM kullanmaz; oyunun kurallarını, bütün silah protokollerini veya gereken fare tuşunu kendiliğinden çözdüğü iddia edilmez.
+
+1. Geçerli key ile giriş yaptıktan sonra **AI** sekmesini aç. **Araç profili: Otomatik**, kuşanılmış `Tool` nesnesinin `WeaponType` niteliği ve adı içindeki tanınan sözcüklerden yakın/uzak mesafe profilini seçer. Tanınmayan araç için **Uzak mesafe** veya **Yakın mesafe** profilini elle seçebilirsin; bu seçim oyuna özel saldırı protokolü eklemez.
+2. Tarama alanı, mesafe ve ateş aralığını ayarla. **Otomatik ateş** varsayılan açıktır. **Hedefe yaklaş** varsayılan kapalıdır; açılırsa yalnız açık görüş hattında düz `Humanoid:Move` hareketi kullanır. Yol bulma, engel çevresinden dolaşma veya zıplama sistemi değildir.
+3. **AI modunu başlat** anahtarını aç ve **Right Shift** ile Klew menüsünü kapat. Klew menüsü açıkken mod bekler; kapatılınca çalışır. Takım arkadaşları seçilmez. Yüklü, görünür, tarama alanı ve mesafe içindeki rakibin başı takip edilir; atış için görüş, menzil ve kamera hizası tekrar kontrol edilir.
+4. Saldırı, hazır ve kuşanılmış aracın standart `Tool:Activate()` / `Tool:Deactivate()` girdisiyle yapılır. **Otomatik** profilde tanınmayan araç ateş etmez. Standart Tool aktivasyonunu kullanmayan özel silah sistemlerinde otomatik saldırı çalışmayabilir; keyfi RemoteEvent çağrısı veya fare tuşu tahmini yapılmaz.
+
+Manuel hareket, fare hareketi/tıklama, dokunma veya gamepad girdisi AI modunu kapatır. Sohbet/başka metin alanına odaklanma, pencere odağının kaybı, Roblox menüsü, ölüm/karakter değişimi, erişimin bitmesi ve kapatma da modu durdurur; tekrar başlatmak için AI anahtarını yeniden aç. AI'nın çalışma durumu saklanmaz: **her yeni execute işleminde kapalı başlar**, profil ve diğer geçerli tercihler korunur.
+
+AI profil seçimi, hedef/görüş/mesafe kontrolleri, standart Tool girdisi, durdurma koşulları ve tercihlerin korunmasına ilişkin taklit Roblox kontrolleri [KlewHubV1-ai-check.json](KlewHubV1-ai-check.json) dosyasındadır. Bu kontrol kaydı canlı Roblox oyunu veya her oyunun silah sistemine uyum kanıtı değildir.
 
 ## Eski Studio dosyaları
 
@@ -99,13 +112,13 @@ Yeni key ile yeniden doğrulama sonrasında kayıtlı ESP tercihlerinin geri yü
 
 ## Doğrulama
 
-Güncel okunabilir istemci ve paketlenmiş `KlewHubV1.lua` üzerinde **190'er test** geçti; taklit Roblox ortamında çalışan mantık testleridir. Kaynak/payload için Luau derlemesi ve yerel adlardan bağımsız AST eşitliği ayrıca kontrol edilir.
+Güncel okunabilir istemci ve paketlenmiş `KlewHubV1.lua` üzerinde **213'er test** geçti; taklit Roblox ortamında çalışan mantık testleridir. Kaynak/payload için Luau derlemesi ve yerel adlardan bağımsız AST eşitliği ayrıca kontrol edilir.
 
 13 Ekim 2026 incelemesinin tarihsel kaydı [KlewHubV1-final-audit-check.json](KlewHubV1-final-audit-check.json) dosyasındadır. O tarihte kaynak ve paket 187'şer kontrolü geçti; bu kayıt güncel kaynak, paket veya yukarıdaki son test toplamının kanıtı değildir.
 
 15 hareket/kilit regresyonu mevcut render ve input yolunu kullanır. Eski sürüm fare merkezi sıçraması, WASD ile kamera/karakter hareketi ve hedefin kamera arkasına geçmesi testlerinde başarısızdı; düzeltilen kaynak ve payload hepsini geçer. [Kilit kontrol kaydı](KlewHubV1-client-motion-check.json). Bağlı Studio bulunmadığından canlı oyun testi yapılmadı; HTML/JPG menü önizlemesidir.
 
-13 Ekim'de eklenen **19 key giriş kontrolü**, gerçek istemci `FocusLost`/Enter ve düğme callback'lerini taklit HTTP yanıtlarıyla çalıştırır. Bu ilk düzeltmenin tarihsel sonucunda toplam 175 kontrolde önce 166 geçti, 9 başarısızdı; düzeltme sonrası 175 geçti, sıfır hata. Bu tarihsel toplam, güncel **190'er test** sonucundan ayrıdır. Başlangıç kontrolü sırasında bekleyen gönderim, key metninin sabitlenmesi, Unicode kenar temizliği, boş/uzun giriş, eski yanıtın iptali ve tekrar deneme kapsanır. [Key giriş kontrol kaydı](KlewHubV1-key-entry-check.json). Kullanıcının canlı HTTP 400 yanıtının gövdesi/hata kodu bulunmadığından bu bildirimin kesin nedeni belirlenmiş değildir; bu testler gerçek Roblox girişi veya canlı key aktivasyonu kanıtı değildir.
+13 Ekim'de eklenen **19 key giriş kontrolü**, gerçek istemci `FocusLost`/Enter ve düğme callback'lerini taklit HTTP yanıtlarıyla çalıştırır. Bu ilk düzeltmenin tarihsel sonucunda toplam 175 kontrolde önce 166 geçti, 9 başarısızdı; düzeltme sonrası 175 geçti, sıfır hata. Bu tarihsel toplam, güncel **213'er test** sonucundan ayrıdır. Başlangıç kontrolü sırasında bekleyen gönderim, key metninin sabitlenmesi, Unicode kenar temizliği, boş/uzun giriş, eski yanıtın iptali ve tekrar deneme kapsanır. [Key giriş kontrol kaydı](KlewHubV1-key-entry-check.json). Kullanıcının canlı HTTP 400 yanıtının gövdesi/hata kodu bulunmadığından bu bildirimin kesin nedeni belirlenmiş değildir; bu testler gerçek Roblox girişi veya canlı key aktivasyonu kanıtı değildir.
 
 HTTP backend için **178 test** geçti: Discord 55, Hub 57, LootLabs 31, bildirim 35. Yerel SQLite ve taklit HTTP/Discord yanıtları kullanılır; canlı Discord botu veya LootLabs görev testi değildir.
 

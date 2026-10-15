@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "checked_at_utc": "2026-10-15T19:32:34.636741+00:00",
+  "source_sha256": "c07a955dde8c4c1f75693ae5f074394bcdc7bd415720a9ed8f38f17994fcc7a4",
+  "payload_sha256": "51120121b00b84a6bc6eab94be27be3aa598258c74872cabb85efd7c8ac9440f",
+  "source": {
+    "passed": 213,
+    "failed": 0
+  },
+  "payload": {
+    "passed": 213,
+    "failed": 0
+  },
+  "previous_regression_checks": 190,
+  "new_ai_checks": 23,
+  "validation_scope": "complete actual source and packaged payload in mocked Roblox and HTTP environment",
+  "luau_compile": "passed",
+  "binding_normalized_ast": "equal",
+  "ui_design_demo_dom_checks": {
+    "passed": 14,
+    "failed": 0
+  },
+  "ai_behavior": {
+    "kind": "local rule-based controller; no LLM or external AI service",
+    "place_metadata": "game.Name and game.PlaceId displayed; not semantic understanding of a game's rules",
+    "equipment_detection": "equipped Tool WeaponType attribute or name keywords; Auto, Ranged and Melee choices",
+    "unknown_equipment": "does not attack or move in Auto; profile can be selected explicitly",
+    "targeting": "live visible on-screen enemy Head inside AI FOV and maximum distance",
+    "friendly_targets": "always excluded independently of ESP teammate visibility",
+    "attack": "ordinary Tool:Activate and Tool:Deactivate; after two aligned render frames; bounded cadence",
+    "movement": "optional Humanoid:Move on a clear straight line of sight; default off; no pathfinding",
+    "manual_settings": "manual aim view, method and other preferences remain unchanged",
+    "restart": "AI itself always off on script execution; AI preferences persist",
+    "pause": "menu opening releases attack and owned movement; closing can resume an armed AI",
+    "stop": "manual movement, mouse input, chat focus, window blur, character loss, camera loss, access loss or unload",
+    "release_retry": "failed Tool release retries after render unbinding; per-activation identity protects a newer pulse"
+  },
+  "regression_coverage": [
+    "default-off and unchanged manual preferences",
+    "equipped ranged Tool recognition and bounded primary activation",
+    "attack cadence, teammate and line-of-sight filtering",
+    "alignment stability before attack",
+    "menu pause and access loss",
+    "unauthorized GUI callbacks",
+    "death and missing camera",
+    "manual WASD, mouse movement, mouse buttons, chat and focus stop",
+    "unknown, backpack, disabled and missing-handle Tool behavior",
+    "unload, reexecution and optional movement",
+    "manual first-person-only setting does not block third-person AI",
+    "unlocked cursor alignment while manual Center preference is preserved",
+    "transient release failure after cleanup and stale timer on a fresh same-Tool activation",
+    "10-stud maximum excludes a target at 15 and permits it only after it enters range"
+  ],
+  "backend_changed": false,
+  "live_roblox": "not tested; no connected Studio session",
+  "compatibility_limits": [
+    "No guarantee of compatibility with every game or custom weapon input system",
+    "No inferred mouse-button mappings or guessed game RemoteEvent calls",
+    "No general map, objectives or mission understanding",
+    "No anticheat bypass or guaranteed hit/kill outcome"
+  ]
+}
