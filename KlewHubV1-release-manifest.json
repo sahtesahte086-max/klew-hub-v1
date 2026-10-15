@@ -1,9 +1,9 @@
 {
   "schema_version": 4,
   "release_model": "external_http_key_service_with_discord_admin",
-  "generated_at_utc": "2026-10-13T15:14:57.456200+00:00",
+  "generated_at_utc": "2026-10-15T17:20:48.923429+00:00",
   "loader_url": "https://raw.githubusercontent.com/sahtesahte086-max/klew-hub-v1/main/KlewHubV1.lua",
-  "github_verified_payload_commit": "ce59906e9a9780347040c9acbdc4c145a550a887",
+  "github_verified_payload_commit": "158d4a7ab36cd6a1308e3a9a5f9b206b23e9b4ce",
   "client_config_key_service_url": "https://klew-hub-key-service.neataphid16.chatgpt.site",
   "publication_status": {
     "public_portal": "public",
@@ -51,20 +51,20 @@
   },
   "artifacts": {
     "KlewHubV1.client.luau": {
-      "bytes": 89755,
-      "sha256": "bd3f657980ddc4806d2f19843249cc29f885e4afe458e27d439c6a7c0255a81c",
+      "bytes": 89929,
+      "sha256": "af7f6ba3ee0292029e7690edfbed6d926a9d379a14310f912c20bf43bf000e80",
       "role": "current_readable_http_client",
       "ast_matches_current_source": true
     },
     "KlewHubV1.lua": {
-      "bytes": 92182,
-      "sha256": "df9f8e0fcd6901ca320be501d3c3cfd39a51f480751eb6db8c1f21029fa66b1f",
+      "bytes": 92194,
+      "sha256": "31094450c60533d35c2a8b1c56777a040c0cc71180e6f435b6470763af11bfd6",
       "role": "current_obfuscated_http_client",
       "ast_matches_current_source": true
     },
     "KlewHubV1.Studio-private.luau": {
-      "bytes": 92182,
-      "sha256": "df9f8e0fcd6901ca320be501d3c3cfd39a51f480751eb6db8c1f21029fa66b1f",
+      "bytes": 92194,
+      "sha256": "31094450c60533d35c2a8b1c56777a040c0cc71180e6f435b6470763af11bfd6",
       "role": "current_payload_compatibility_filename_requires_http_adapter",
       "ast_matches_current_source": true
     },
@@ -74,8 +74,8 @@
       "role": "raw_download_loader_requires_supported_environment"
     },
     "github-distribution/KlewHubV1.lua": {
-      "bytes": 92182,
-      "sha256": "df9f8e0fcd6901ca320be501d3c3cfd39a51f480751eb6db8c1f21029fa66b1f",
+      "bytes": 92194,
+      "sha256": "31094450c60533d35c2a8b1c56777a040c0cc71180e6f435b6470763af11bfd6",
       "role": "github_payload_staging_copy",
       "ast_matches_current_source": true,
       "identical_to_current_local_payload": true
@@ -92,34 +92,60 @@
     },
     "KlewHubV1-client-motion-check.json": {
       "bytes": 1815,
-      "sha256": "6027daa9bdc618b57b75cc580bce12f3a35b2e8930c98fbed24f6f314ec2c5ac",
+      "sha256": "511126434ec309508e1e9573d7f40f9750901c89451d46b42beae9ce6c063daa",
       "role": "client_motion_lock_verification_receipt"
     },
     "github-distribution/KlewHubV1-client-motion-check.json": {
       "bytes": 1815,
-      "sha256": "6027daa9bdc618b57b75cc580bce12f3a35b2e8930c98fbed24f6f314ec2c5ac",
+      "sha256": "511126434ec309508e1e9573d7f40f9750901c89451d46b42beae9ce6c063daa",
       "role": "github_client_motion_receipt_copy"
     },
     "KlewHubV1-key-entry-check.json": {
-      "bytes": 2203,
-      "sha256": "6d3c27c363a7e5f7ec8e687b3fbe0886b462cfc242c85146abec9208d3bfa814",
+      "bytes": 2219,
+      "sha256": "caf903d688c7575b30084811b97aa41d9c71e41a4cd91a97b9a0613ed9df46ed",
       "role": "client_key_entry_verification_receipt"
     },
     "github-distribution/KlewHubV1-key-entry-check.json": {
-      "bytes": 2203,
-      "sha256": "6d3c27c363a7e5f7ec8e687b3fbe0886b462cfc242c85146abec9208d3bfa814",
+      "bytes": 2219,
+      "sha256": "caf903d688c7575b30084811b97aa41d9c71e41a4cd91a97b9a0613ed9df46ed",
       "role": "github_client_key_entry_receipt_copy",
       "identical_to_current_local_receipt": true
     },
     "KlewHubV1-final-audit-check.json": {
       "bytes": 3188,
       "sha256": "3474af0207a306d31369a66d412e5c93ed2c5191a53bc7ebef748991c2832cc8",
-      "role": "client_final_audit_verification_receipt"
+      "role": "historical_2026_10_13_client_audit_verification_receipt",
+      "tested_this_release": false,
+      "historical_checked_date_utc": "2026-10-13"
     },
     "github-distribution/KlewHubV1-final-audit-check.json": {
       "bytes": 3188,
       "sha256": "3474af0207a306d31369a66d412e5c93ed2c5191a53bc7ebef748991c2832cc8",
-      "role": "github_client_final_audit_receipt_copy",
+      "role": "github_historical_2026_10_13_client_audit_receipt_copy",
+      "tested_this_release": false,
+      "historical_checked_date_utc": "2026-10-13",
+      "identical_to_current_local_receipt": true
+    },
+    "KlewHubV1-reset-live-check.json": {
+      "bytes": 1696,
+      "sha256": "246ec41e3d459e898d7ab21f0c0cc62b8bff3c7dca46ac5f863e728bfdd1de8a",
+      "role": "live_key_reset_and_discord_cleanup_verification_receipt"
+    },
+    "github-distribution/KlewHubV1-reset-live-check.json": {
+      "bytes": 1696,
+      "sha256": "246ec41e3d459e898d7ab21f0c0cc62b8bff3c7dca46ac5f863e728bfdd1de8a",
+      "role": "github_live_key_reset_and_discord_cleanup_receipt_copy",
+      "identical_to_current_local_receipt": true
+    },
+    "KlewHubV1-esp-restore-check.json": {
+      "bytes": 1239,
+      "sha256": "33c79e65ce36806a41c5868a71b6f3161d170972329b1c73799f629655dae0c2",
+      "role": "client_esp_preference_restore_verification_receipt"
+    },
+    "github-distribution/KlewHubV1-esp-restore-check.json": {
+      "bytes": 1239,
+      "sha256": "33c79e65ce36806a41c5868a71b6f3161d170972329b1c73799f629655dae0c2",
+      "role": "github_client_esp_preference_restore_receipt_copy",
       "identical_to_current_local_receipt": true
     },
     "KlewHubV1.server.luau": {
@@ -166,14 +192,21 @@
     }
   },
   "validation": {
-    "client_source_and_packaged_payload_tests_each": 187,
+    "client_source_and_packaged_payload_tests_each": 190,
     "client_test_artifacts": [
       "KlewHubV1.client.luau",
       "KlewHubV1.lua"
     ],
-    "client_final_audit_receipt": "KlewHubV1-final-audit-check.json",
+    "client_final_audit_history": {
+      "checked_date_utc": "2026-10-13",
+      "full_suite_tests_each": 187,
+      "receipt": "KlewHubV1-final-audit-check.json",
+      "scope": "historical 13 October audit; not the latest source, payload or full-suite result"
+    },
+    "live_key_reset_receipt": "KlewHubV1-reset-live-check.json",
+    "client_esp_preference_restore_receipt": "KlewHubV1-esp-restore-check.json",
     "client_key_entry_regressions": {
-      "current_full_suite_tests_each": 187,
+      "current_full_suite_tests_each": 190,
       "initial_key_entry_fix_history": {
         "checked_date_utc": "2026-10-13",
         "new_checks": 19,
@@ -191,13 +224,13 @@
       "scope": "actual_client_FocusLost_Activated_and_mock_HTTP_boundaries",
       "live_reported_http_400_root_cause": "not_determined"
     },
-    "backend_tests_total": 157,
+    "backend_tests_total": 178,
     "worker_runtime_tests_separate": 2,
     "backend_test_breakdown": {
-      "discord": 50,
-      "hub": 44,
+      "discord": 55,
+      "hub": 57,
       "lootlabs": 31,
-      "notifications": 32
+      "notifications": 35
     },
     "portal_actual_component_mock_checks": 44,
     "result_page_actual_component_mock_checks": 26,

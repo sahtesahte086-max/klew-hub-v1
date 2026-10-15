@@ -1,0 +1,64 @@
+{
+  "checkedAt": "2026-10-15",
+  "siteVersion": 14,
+  "deployment": {
+    "id": "appgdep_6ad109e425dc8191a382807644e2f090",
+    "project_id": "appgprj_6aca5807e07c8191bfba974724c854d2",
+    "title": "Klew Hub key hizmeti",
+    "version_id": "appgprj_6aca5807e07c8191bfba974724c854d2~appgver_f85b338c4a0481918a8a4cf1182f2535",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://klew-hub-key-service.neataphid16.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6aca5807e07c8191bfba974724c854d2",
+    "failure_message": null,
+    "env_set_revision": 4,
+    "updated_at": "2026-10-15T17:14:31.264369+00:00"
+  },
+  "source": "71caff48e1162450a696388d2be1ce502090e27c",
+  "liveTablesEmpty": true,
+  "normalSessionsAbsent": true,
+  "discord": {
+    "mode": "clean",
+    "channelId": "1558728156758933524",
+    "panelMessageId": "1558898250277199893",
+    "private": true,
+    "scanned": 6,
+    "oldBotMessages": 4,
+    "protected": 2,
+    "klewCommands": [
+      "klew-panel",
+      "klew-keys",
+      "klew-key",
+      "klew-revoke",
+      "klew-logs",
+      "klew-status",
+      "klew-reset",
+      "klew-help"
+    ],
+    "deleted": 4,
+    "panelPreserved": true,
+    "resetButtonPresent": true
+  },
+  "tests": {
+    "total": 180,
+    "passed": 180,
+    "failed": 0,
+    "discord": 55,
+    "hub": 57,
+    "notifications": 35,
+    "lootlabs": 31,
+    "workerd": 2
+  },
+  "productionBuild": "passed",
+  "liveHello": {
+    "status": 200,
+    "ok": true,
+    "authorized": false,
+    "storageReady": true,
+    "lootlabsConfigured": true
+  },
+  "liveRoblox": "not tested",
+  "lootlabsAdvertisingCompletion": "not tested"
+}

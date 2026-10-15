@@ -36,7 +36,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/sahtesahte086-max/kle
 
 Bu satır, yükleme yöntemini ve gereken HTTP POST adaptörünü sağlayan ortamda istemciyi indirir. Repo yolu aynı kaldı. GitHub Raw payload'ı yerel sürümün SHA-256 hash'iyle eşleşerek doğrulandı.
 
-Doğrulanan payload commit'i: `ce59906e9a9780347040c9acbdc4c145a550a887`. Sonraki belge commit'leri payload değiştiği anlamına gelmez.
+Doğrulanan payload commit'i: `158d4a7ab36cd6a1308e3a9a5f9b206b23e9b4ce`. Sonraki belge commit'leri payload değiştiği anlamına gelmez.
 
 `KlewHubV1.lua` değişken adları kısaltılmış dağıtım dosyasıdır. **Public GitHub Raw bağlantısı kapalı kaynak sağlamaz.** İndiren kişi kodu alabilir; obfuscation yalnız okumayı zorlaştırır. `LICENSE.txt` kullanım koşullarını belirtir, teknik gizlilik sağlamaz. Secrets ve bot tokenı dağıtım dosyalarına konulmaz.
 
@@ -54,6 +54,7 @@ Bot, belirlenen sunucuda ve server tarafında doğrulanan Discord kullanıcı al
 | `/klew-revoke key:KLEW-...` | Tam key veya 64 karakterlik kimlik ile iptal onayını açar. |
 | `/klew-logs` | Son 10 panel açılış kaydını yalnız yetkili kullanıcıya gösterir. |
 | `/klew-status` | Key servisi ve LootLabs yapılandırmasını gösterir. |
+| `/klew-reset` | Bütün keyleri, normal kullanıcı oturumlarını ve sayaçları sıfırlamak için yazılı onay formu açar. |
 | `/klew-help` | Kullanımı gösterir. |
 
 Key süre dolmadan aktifleştirilir; erişim süresi ilk doğrulamadan başlar. Hedef verilmediyse ilk kullanan Roblox UserId'ye bağlanır. Bu dış servis sürümünde Roblox kimlikleri istemcinin beyanıdır; OAuth ile doğrulanmış değildir.
@@ -61,6 +62,10 @@ Key süre dolmadan aktifleştirilir; erişim süresi ilk doğrulamadan başlar. 
 Key alanında **Enter** ile **Doğrula ve devam et** aynı giriş akışını çalıştırır. Açılıştaki `Hello` kontrolü sürüyorsa gönderilen key bir kez bekletilir; kontrol yanıtından veya 15 saniyelik zaman aşımından sonra doğrulanır. Gönderim anındaki metin kullanılır. Yapıştırma sırasında key'in başına veya sonuna eklenen boşluk ve görünmez kopyalama işaretleri temizlenir; key'in içindeki karakterler değiştirilmez. Boş veya 1024 bayttan uzun giriş gönderilmez. Hata/zaman aşımında key alanda kalır ve tekrar denenebilir; **Kayıtlı girişi unut** bekleyen giriş ve eski yanıtın erişim açmasını da iptal eder.
 
 Yönetim kartı belirlenen özel kanaldadır; tam key oluşturma, liste ve ayrıntı yanıtlarını yalnız işlemi yapan admin görür. Tam key yalnız oluşturma yanıtında verilir; sonraki listede kimlik ve durum gösterilir. İptal onay ister, vazgeç key'i korur, tekrar iptal ilk iptal tarihini değiştirmez. Aynı interaction tekrar gelirse ikinci key üretilmez. Kesintide key yanıtı otomatik kurtarılamayabilir. Discord yönetimi oyuncu giriş kotasını tüketmez; admin ve işlem başına ayrı kotalar vardır: Hello 120, liste/detay 60, oluşturma/iptal 30 istek/dakika. Ayrıntılı kurulum geliştirici paketindeki `work/klew-key-service/DISCORD-KURULUM.md` dosyasındadır; `env.example` yalnız boş/örnek ayarlar içerir.
+
+`/klew-reset` veya paneldeki kırmızı sıfırlama düğmesi, önceden doldurulmamış bir onay formu açar. İşlemi yapmak için tam **TUM KEYLERI SIFIRLA** yazılmalıdır. Form; yetkili Discord hesabına, kanala ve sıfırlama amacına bağlı imzayla korunur, 15 dakika geçerlidir. İşlem bütün keyleri, normal kullanıcı oturumlarını, erişim izinlerini, kullanım kayıtlarını, LootLabs takiplerini, bildirim kayıtlarını ve işlem sayaçlarını temizler; yönetici oturumları ve interaction tekrar işlem koruması korunur. Silinen kayıt sayıları yalnız işlemi yapan adminin yanıtında gösterilir. Bu işlem geri alınamaz.
+
+Canlı key/sayaç sıfırlaması ve Discord kanal düzenlemesinin tarihli sonucu [KlewHubV1-reset-live-check.json](KlewHubV1-reset-live-check.json) dosyasındadır. Bu kayıt, o işlemin sonrasındaki durumu gösterir; daha sonra oluşturulan keyler ayrıca yönetilir.
 
 Key oluşturma, ilk aktifleştirme ve ayrı panel açılışları kalıcı bir bildirim kuyruğuna kaydedilir. Bot, yapılandırılmış özel kanala saat, bağlantı IP'si ve scriptin bildirdiği Roblox kullanıcı adı/UserId ile mesaj gönderir. Key alınırken Roblox kimliği henüz bilinmeyebilir; aktifleştirmede bildirilir. Discord'dan oluşturulan key'in IP'si bilinmiyor olarak gösterilir. Tam key veya oturum tokenı bildirim mesajına yazılmaz; kısa key izi ve **Key iptal et** düğmesi vardır. Düğme Discord imzası, sunucu, kanal ve admin ID'si doğrulanarak çalışır. Kanalın özel olduğu her gönderimde kontrol edilir; sunucu Administrator yetkisine sahip kişiler Discord gereği yine görebilir.
 
@@ -71,6 +76,10 @@ Bildirim işlemi key mutasyonuyla aynı veritabanı transaction'ında yazılır.
 Doğrulanmış normal kullanıcı oturumu ve geçerli ayarlar aynı hesap/servis kapsamında hatırlanır. Yeniden çalıştırmada sunucu `Hello` doğrulaması başarılı olmadan erişim açılmaz. Key iptal edilmişse, oturumun süresi dolmuşsa veya **Kayıtlı girişi unut** seçilirse kayıtlı giriş temizlenir. Ham key ve admin bootstrap/oturumu saklanmaz. Dosya okuma/yazma sunan ortamda cihazda JSON kayıt tutulur; bu yetenek yoksa yalnız aynı çalışma ortamının belleği kullanılır. Kalıcı oturum tokenı bu yerel JSON'da bulunur; yerel dosyayı paylaşma.
 
 Ayar değişiklikleri, renk, kilit tuşu ve otomatik tuş tercihi saklanır; geçersiz/bozuk kayıt güvenli varsayılanlara döner. **Varsayılanlara dön** ayarları ve E kilit tuşunu sıfırlar.
+
+Key iptali veya oturum süresinin dolması erişimi kapatır; kayıtlı ESP tercihlerini tek başına sıfırlamaz. Yeni key ile yeniden doğrulandıktan sonra aynı kayıtlı ESP ayarları geri yüklenir. **Varsayılanlara dön** tercihleri bilerek sıfırlamak için kullanılır.
+
+Yeni key ile yeniden doğrulama sonrasında kayıtlı ESP tercihlerinin geri yüklenmesine ilişkin kontrol sonuçları [KlewHubV1-esp-restore-check.json](KlewHubV1-esp-restore-check.json) dosyasındadır. Taklit Roblox ortamındaki bu kontroller canlı oyun testi yerine geçmez.
 
 ## ESP ve kamera hedef takibi
 
@@ -90,15 +99,15 @@ Ayar değişiklikleri, renk, kilit tuşu ve otomatik tuş tercihi saklanır; ge�
 
 ## Doğrulama
 
-Güncel okunabilir istemci ve paketlenmiş `KlewHubV1.lua` üzerinde **187'er test** geçti; taklit Roblox ortamında çalışan mantık testleridir. Kaynak/payload için Luau derlemesi ve yerel adlardan bağımsız AST eşitliği ayrıca kontrol edilir.
+Güncel okunabilir istemci ve paketlenmiş `KlewHubV1.lua` üzerinde **190'er test** geçti; taklit Roblox ortamında çalışan mantık testleridir. Kaynak/payload için Luau derlemesi ve yerel adlardan bağımsız AST eşitliği ayrıca kontrol edilir.
 
-Son istemci incelemesinin kaydı [KlewHubV1-final-audit-check.json](KlewHubV1-final-audit-check.json) dosyasındadır.
+13 Ekim 2026 incelemesinin tarihsel kaydı [KlewHubV1-final-audit-check.json](KlewHubV1-final-audit-check.json) dosyasındadır. O tarihte kaynak ve paket 187'şer kontrolü geçti; bu kayıt güncel kaynak, paket veya yukarıdaki son test toplamının kanıtı değildir.
 
 15 hareket/kilit regresyonu mevcut render ve input yolunu kullanır. Eski sürüm fare merkezi sıçraması, WASD ile kamera/karakter hareketi ve hedefin kamera arkasına geçmesi testlerinde başarısızdı; düzeltilen kaynak ve payload hepsini geçer. [Kilit kontrol kaydı](KlewHubV1-client-motion-check.json). Bağlı Studio bulunmadığından canlı oyun testi yapılmadı; HTML/JPG menü önizlemesidir.
 
-13 Ekim'de eklenen **19 key giriş kontrolü**, gerçek istemci `FocusLost`/Enter ve düğme callback'lerini taklit HTTP yanıtlarıyla çalıştırır. Bu ilk düzeltmenin tarihsel sonucunda toplam 175 kontrolde önce 166 geçti, 9 başarısızdı; düzeltme sonrası 175 geçti, sıfır hata. Bu tarihsel toplam, güncel **187'er test** sonucundan ayrıdır. Başlangıç kontrolü sırasında bekleyen gönderim, key metninin sabitlenmesi, Unicode kenar temizliği, boş/uzun giriş, eski yanıtın iptali ve tekrar deneme kapsanır. [Key giriş kontrol kaydı](KlewHubV1-key-entry-check.json). Kullanıcının canlı HTTP 400 yanıtının gövdesi/hata kodu bulunmadığından bu bildirimin kesin nedeni belirlenmiş değildir; bu testler gerçek Roblox girişi veya canlı key aktivasyonu kanıtı değildir.
+13 Ekim'de eklenen **19 key giriş kontrolü**, gerçek istemci `FocusLost`/Enter ve düğme callback'lerini taklit HTTP yanıtlarıyla çalıştırır. Bu ilk düzeltmenin tarihsel sonucunda toplam 175 kontrolde önce 166 geçti, 9 başarısızdı; düzeltme sonrası 175 geçti, sıfır hata. Bu tarihsel toplam, güncel **190'er test** sonucundan ayrıdır. Başlangıç kontrolü sırasında bekleyen gönderim, key metninin sabitlenmesi, Unicode kenar temizliği, boş/uzun giriş, eski yanıtın iptali ve tekrar deneme kapsanır. [Key giriş kontrol kaydı](KlewHubV1-key-entry-check.json). Kullanıcının canlı HTTP 400 yanıtının gövdesi/hata kodu bulunmadığından bu bildirimin kesin nedeni belirlenmiş değildir; bu testler gerçek Roblox girişi veya canlı key aktivasyonu kanıtı değildir.
 
-HTTP backend için **157 test** geçti: Discord 50, Hub 44, LootLabs 31, bildirim 32. Yerel SQLite ve taklit HTTP/Discord yanıtları kullanılır; canlı Discord botu veya LootLabs görev testi değildir.
+HTTP backend için **178 test** geçti: Discord 55, Hub 57, LootLabs 31, bildirim 35. Yerel SQLite ve taklit HTTP/Discord yanıtları kullanılır; canlı Discord botu veya LootLabs görev testi değildir.
 
 12 Ekim v12 canlı Discord kontrolünde sabit panelden 2 test key'i üretildi; liste, detay, vazgeç ve onaylı iptal denendi. İptal edilen key iki açık tokenla reddedildi. Test keyleri temizlendi. Bu tarihli kanıt, 13 Ekim menü/key giriş değişikliğinde Discord akışının yeniden canlı test edildiği anlamına gelmez. Sürüm, kanal ve canlı sonuç kaydı [KlewHubV1-discord-admin-live-check.json](KlewHubV1-discord-admin-live-check.json) içindedir. [Özel yönetim panelini aç](https://discord.com/channels/1492835611692765244/1558728156758933524/1558898250277199893).
 

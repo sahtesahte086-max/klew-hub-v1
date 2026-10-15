@@ -117,3 +117,17 @@ Portal v13, kaynak `eef39457ec1773c10e0f039899f1974dc688952e` ve deployment `app
 Menüde Main varsayılan olarak ESP ve Settings kartlarını gösterir; aimbot ve Hedefi koru ayrı Aimbot sekmesindedir. Referansa göre panel 482×360, sidebar 160 px, satırlar 40 px, kart aralıkları 5 px ve cyan anahtarlar kullanır. Büyütülmüş panel 680×500'dür. Key ekranı aynı gri pencere stilini kullanır. Logo ve 29 gerçek ayar korunur; örnek görseldeki oyuna özel sahte kontroller eklenmez. HTML önizlemesi 11 DOM kontrolünü geçti; bu bir tasarım demosudur.
 
 Bu taramada bağlı Roblox Studio yoktu. Canlı Roblox render ve input davranışı doğrulanmış değildir. Ayrıntılı, sır içermeyen kontrol kaydı: [Son tarama](KlewHubV1-final-audit-check.json).
+
+## 15 Ekim v14 sıfırlama ve bildirim yarışları
+
+v14, `71caff48e1162450a696388d2be1ce502090e27c` kaynağından 15 Ekim 2026 17:14:31 UTC'de yayımlandı. Bir defalık migration bütün normal keyleri, oturumları, grantleri, kullanım kayıtlarını, eski LootLabs challenge'larını ve bildirim kuyruğunu sildi. Canlı tabloların boş olduğu doğrulandı; normal oturum kalmadı, 11 yönetici oturum kaydı korundu. Yönetici ayarları ve Discord tekrar işlem koruması korunur. Sonradan üretilen yeni keyler ve yeni kullanım kayıtları normal biçimde yeniden sayılır.
+
+Discord özel kanalında dört eski bot mesajı silindi; mevcut sabit panel korundu, yenilendi ve sekiz komut kaydedildi. `/klew-reset` ve paneldeki sıfırlama düğmesi, sahip/amaç/kanal/süreye bağlı imzalı boş form açar. Tam `TUM KEYLERI SIFIRLA` onayı olmadan işlem çalışmaz. Sıfırlama bir D1 transaction'ıdır; ara hata bütün silmeleri geri alır. Aynı Discord interaction tekrar gelirse işlem yeniden yürütülmez.
+
+Genel incelemede eski Open isteğinin reset/iptal sonrasında yeniden log ve bildirim yazabildiği yarışı yeniden üretildi. Kayıt yazımı artık oturum, key, grant ve süreyi aynı SQL içinde doğrular; bildirim de aynı canlı yetkiyi ve logu kontrol eder. Eski sekiz yarış testi eski kaynakta başarısız, düzeltmeli kaynakta başarılıydı. Güncel **180 servis testi** geçti: Discord 55, Hub 57, bildirim 35, LootLabs 31 ve ayrıca bu toplamın içindeki 2 workerd kontrolü. Üretim derlemesi başarılıdır. [Canlı sıfırlama kaydı](KlewHubV1-reset-live-check.json).
+
+## 15 Ekim açık görünen ama çalışmayan kayıtlı ESP
+
+Erişim kapandığında `applyAccess(false)` kaydedilmiş ESP ve aim tercihini runtime'da false yapıyor, önceden çizilmiş açık anahtar boyasını güncellemiyordu. Yeni key doğrulansa da ESP kapalı kaldığından elle aç-kapa gerekiyordu. Seçilen tercihler artık korunur; her erişim değişimi ESP güncellemesini tetikler. Erişim yokken mevcut çizimler hemen silinir, tuşlar bırakılır ve kamera/ESP/FOV erişim kontrolüyle kapalı kalır.
+
+Üç yeni gerçek istemci regresyonu süresi bitmiş kayıtlı giriş, yeniden çalıştırmada iptal edilmiş giriş ve lease kopması sonrası yeniden doğrulamayı kapsar. Önceki kaynakta toplam 190 kontrolde 187 geçti, bu üçü başarısızdı. Güncel okunabilir kaynak ve paket **190/190** geçti; Luau derlemesi ve normalized AST eşitliği başarılı. Canlı Roblox oturumu test edilmedi. [ESP geri yükleme kaydı](KlewHubV1-esp-restore-check.json).

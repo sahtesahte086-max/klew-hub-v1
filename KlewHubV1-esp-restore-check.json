@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "checked_date": "2026-10-15",
+  "source_sha256": "af7f6ba3ee0292029e7690edfbed6d926a9d379a14310f912c20bf43bf000e80",
+  "payload_sha256": "31094450c60533d35c2a8b1c56777a040c0cc71180e6f435b6470763af11bfd6",
+  "previous_source_with_added_checks": {
+    "passed": 187,
+    "failed": 3,
+    "total": 190
+  },
+  "current_source": {
+    "passed": 190,
+    "failed": 0
+  },
+  "current_payload": {
+    "passed": 190,
+    "failed": 0
+  },
+  "new_checks": [
+    "expired saved session followed by a valid key",
+    "reexecute with revoked cached session followed by a valid key",
+    "lease loss followed by reauthentication"
+  ],
+  "root_cause": "applyAccess(false) changed Aim and ESP runtime settings to false without repainting already-on controls",
+  "fix": "Keep selected preferences across access changes, dirty ESP on every access transition, and immediately remove visuals when access is denied",
+  "security": "Camera, FOV and ESP remain gated by accessAllowed; held input is cleared on denial",
+  "validation": {
+    "luau_compile": "passed",
+    "normalized_ast": "equal",
+    "runtime": "complete actual source and packaged payload with mocked Roblox and HTTP boundaries",
+    "liveRoblox": "not tested"
+  }
+}
